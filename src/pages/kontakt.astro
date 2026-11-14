@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import { kancelarija, telefonLink, emailLink } from '../data/kancelarija';
+import { kancelarijaSchema } from '../data/schema';
+---
+
+<Base
+	title="Kontakt | Advokatska kancelarija JagicLaw, Beograd"
+	description="Pozovite ili pišite advokatskoj kancelariji JagicLaw u Beogradu. Opišite nam situaciju i reći ćemo vam koje su vaše mogućnosti."
+	schema={[kancelarijaSchema()]}
+>
+	<section class="section">
+		<div class="wrap contact-grid">
+			<div>
+				<p class="eyebrow">Kontakt</p>
+				<h1>Javite nam se</h1>
+				<p class="lede">
+					Opišite ukratko situaciju i, ako imate, pošaljite dokumente: ugovor, rešenje, nalog, prepisku. Javićemo vam koje su
+					vaše mogućnosti i šta je sledeći korak.
+				</p>
+				<p class="note">
+					Ako imate rok koji ističe, na primer za žalbu, tužbu ili prekršajni nalog, recite to odmah na početku poziva ili u
+					naslovu e-maila.
+				</p>
+			</div>
+
+			<div class="contact-card">
+				<a class="item" href={telefonLink}>
+					<span class="label">Telefon</span>
+					<span class="value">{kancelarija.telefon}</span>
+				</a>
+				<a class="item" href={emailLink}>
+					<span class="label">E-mail</span>
+					<span class="value">{kancelarija.email}</span>
+				</a>
+				<div class="item">
+					<span class="label">Adresa</span>
+					<span class="value">{kancelarija.adresa}<br />{kancelarija.postanskiBroj} {kancelarija.grad}</span>
+				</div>
+				<div class="item">
+					<span class="label">Radno vreme</span>
+					<span class="value">{kancelarija.radnoVreme}</span>
+				</div>
+				<div class="item">
+					<span class="label">Jezici</span>
+					<span class="value">Srpski, engleski</span>
+				</div>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.contact-grid { display: grid; gap: 3rem; }
+	@media (min-width: 56rem) { .contact-grid { grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; } }
+	.lede { margin-bottom: 1.5rem; }
+	.note { background: var(--accent-soft); border-radius: var(--radius); padding: 1rem 1.25rem; color: var(--ink); max-width: 40rem; }
+	.contact-card { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+	.item { display: grid; gap: 0.15rem; padding: 1.15rem 1.5rem; text-decoration: none; color: var(--ink); }
+	.item + .item { border-top: 1px solid var(--line); }
+	a.item:hover { background: var(--surface); }
+	.label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+	.value { font-size: 1.15rem; font-weight: 600; }
+	a.item .value { color: var(--accent); }
+</style>

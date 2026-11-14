@@ -1,31 +1,30 @@
-# Jagić Law
+# JagicLaw
 
-Website for the law firm of Luka and Damjan Jagić. Plain-language guides on Serbian misdemeanors (prekršaji), written so people find them through Google and AI assistants like ChatGPT and Gemini.
+Sajt advokatske kancelarije JagicLaw (advokati Luka Jagić i Damjan Jagić, Beograd).
+Cilj: da nas ljudi i firme nađu preko Google-a i AI asistenata i da se jave nama.
 
-Built with [Astro](https://astro.build), deployed on Vercel.
+Napravljen u [Astro](https://astro.build), objavljuje se na Vercel-u.
 
-## Running locally
+## Pokretanje na računaru
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Status
+Sajt je tada na http://localhost:4321.
 
-v1 is a draft and is marked `noindex` (`INDEXABLE` in `src/pages/index.astro`). Turn indexing on only after the lawyers review the content.
+## Gde se šta menja
 
-## Plan
+| Šta | Gde |
+| --- | --- |
+| Telefon, e-mail, adresa, radno vreme, biografije | `src/data/kancelarija.ts` |
+| Tekst jedne oblasti prava (usluge, česta pitanja) | `src/content/oblasti/<oblast>.md` |
+| Nova oblast prava | novi `.md` fajl u `src/content/oblasti/` (kopirajte postojeći) |
+| Početna strana | `src/pages/index.astro` |
+| Stranica na engleskom | `src/pages/en/index.astro` |
+| Boje, slova, zaglavlje i podnožje | `src/layouts/Base.astro` |
 
-1. Basic home page (done)
-2. Deploy to Vercel, connect the jagiclaw.rs domain
-3. Guides as a content collection: one question per page, direct answer first, legal basis, named author, last-updated date
-4. English section for foreigners (`/en/`)
-5. SEO and AI search setup: sitemap, schema markup, Google Search Console, Bing Webmaster Tools + IndexNow, Google Business Profile
-6. Lawyers review every guide, then turn indexing on
+## Plan i šta je ostalo da se uradi
 
-## Design
-
-- Colors: sign blue `#0f4c9c`, white, asphalt `#262b30`, concrete `#e7e9ec`, deadline red `#c8102e` (used only for deadlines and focus)
-- Type: Barlow Semi Condensed (headings, road-sign feel), Source Serif 4 (body text)
-- The one bold element is the blue road direction sign in the hero. Everything else stays quiet.
+Sve što treba uraditi pre i posle objave, ko šta radi i otvorena pitanja: [PLAN.md](PLAN.md).

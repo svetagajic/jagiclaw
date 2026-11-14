@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import KontaktCta from '../components/KontaktCta.astro';
+import { advokati, kancelarija } from '../data/kancelarija';
+
+const schema = advokati.map((a) => ({
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: a.ime,
+	jobTitle: a.zvanje,
+	worksFor: { '@id': `${kancelarija.url}/#kancelarija` },
+}));
+---
+
+<Base
+	title="Advokati Luka Jagić i Damjan Jagić | JagicLaw, Beograd"
+	description="Upoznajte advokate kancelarije JagicLaw iz Beograda: Luka Jagić i Damjan Jagić."
+	schema={schema}
+>
+	<section class="section">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Advokati</p>
+				<h1>Ko smo</h1>
+				<p class="lede">
+					{kancelarija.punNaziv} iz Beograda. Na svakom predmetu radi advokat sa kojim ste razgovarali, od prvog sastanka do kraja.
+				</p>
+			</div>
+
+			<div class="bios">
+				{advokati.map((a) => (
+					<article class="bio">
+						<div class="photo" aria-hidden="true">{a.ime.split(' ').map((d) => d[0]).join('')}</div>
+						<div>
+							<h2>{a.ime}</h2>
+							<p class="role">{a.zvanje}</p>
+							<p>{a.bio}</p>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<KontaktCta />
+</Base>
+
+<style>
+	.bios { display: grid; gap: 1.5rem; }
+	@media (min-width: 56rem) { .bios { grid-template-columns: 1fr 1fr; } }
+	.bio { display: grid; gap: 1.5rem; background: var(--surface); border-radius: 18px; padding: 1.75rem; }
+	@media (min-width: 36rem) { .bio { grid-template-columns: 7rem 1fr; } }
+	.photo { width: 7rem; height: 7rem; border-radius: 14px; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 1.8rem; font-weight: 600; }
+	.bio h2 { font-size: 1.6rem; margin-bottom: 0.15rem; }
+	.role { color: var(--accent); font-weight: 600; margin-bottom: 0.9rem; }
+</style>

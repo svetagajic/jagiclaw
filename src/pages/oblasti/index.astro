@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import KontaktCta from '../../components/KontaktCta.astro';
+
+const oblasti = (await getCollection('oblasti')).sort((a, b) => a.data.redosled - b.data.redosled);
+const osnovne = oblasti.filter((o) => o.data.grupa === 'osnovna');
+const dodatne = oblasti.filter((o) => o.data.grupa === 'dodatna');
+---
+
+<Base
+	title="Oblasti rada | Advokatska kancelarija JagicLaw, Beograd"
+	description="Privredno, ugovorno, radno, krivično i prekršajno pravo, nepokretnosti, naplata potraživanja i sudski sporovi. Advokatska kancelarija JagicLaw, Beograd."
+>
+	<section class="section">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Oblasti rada</p>
+				<h1>Čime se bavimo</h1>
+				<p class="lede">Radimo sa firmama, preduzetnicima i građanima. Izaberite oblast da vidite šta tačno radimo i odgovore na česta pitanja.</p>
+			</div>
+
+			<div class="cards">
+				{osnovne.map((o) => (
+					<a class="card" href={`/oblasti/${o.id}/`}>
+						<h2 class="card-title">{o.data.naziv}</h2>
+						<p>{o.data.kratko}</p>
+						<span class="more">Saznajte više →</span>
+					</a>
+				))}
+			</div>
+
+			<h2 class="sub">Oblasti u kojima takođe postupamo</h2>
+			<div class="cards">
+				{dodatne.map((o) => (
+					<a class="card" href={`/oblasti/${o.id}/`}>
+						<h3>{o.data.naziv}</h3>
+						<p>{o.data.kratko}</p>
+						<span class="more">Saznajte više →</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<KontaktCta />
+</Base>
+
+<style>
+	.card-title { font-size: 1.2rem; letter-spacing: -0.012em; margin-bottom: 0.5rem; }
+	.sub { font-size: 1.5rem; margin: 4rem 0 1.5rem; }
+</style>
