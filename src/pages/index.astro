@@ -1,0 +1,169 @@
+---
+import '@fontsource/barlow-semi-condensed/500.css';
+import '@fontsource/barlow-semi-condensed/700.css';
+import '@fontsource-variable/source-serif-4';
+
+// v1 is a draft: keep it out of search until Luka and Damjan review the content.
+const INDEXABLE = false;
+
+const pitanja = [
+	'Šta ako ne platim prekršajni nalog?',
+	'Kada prekršaj zastareva?',
+	'Kako se podnosi zahtev za sudsko odlučivanje?',
+	'Doplatna karta za parking: da li moram da platim?',
+	'Kazneni poeni: kada se oduzima vozačka dozvola?',
+];
+---
+
+<html lang="sr-Latn">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Jagić Law · Advokati za prekršaje</title>
+		<meta name="description" content="Dobili ste prekršajni nalog ili kaznu? Advokati Luka i Damjan Jagić objašnjavaju vaše opcije i rokove." />
+		{!INDEXABLE && <meta name="robots" content="noindex, nofollow" />}
+	</head>
+	<body>
+		<header class="wrap top">
+			<a class="mark" href="/">Jagić Law</a>
+			<nav aria-label="Glavna navigacija">
+				<a href="#pitanja">Vodiči</a>
+				<a href="#advokati">Advokati</a>
+				<a href="#kontakt">Kontakt</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="wrap hero">
+				<div class="hero-text">
+					<h1>Dobili ste prekršajni nalog?</h1>
+					<p class="lede">Od dana kada ste ga primili imate osam dana da odlučite šta ćete uraditi. Ovo su vaše tri mogućnosti.</p>
+				</div>
+
+				<div class="sign" role="img" aria-label="Putokaz sa tri mogućnosti nakon prijema prekršajnog naloga">
+					<div class="sign-inner">
+						<div class="row">
+							<span class="arrow" aria-hidden="true">←</span>
+							<span class="dest">Platite polovinu kazne</span>
+							<span class="km">8 dana</span>
+						</div>
+						<div class="row">
+							<span class="arrow" aria-hidden="true">→</span>
+							<span class="dest">Tražite da odluči sud</span>
+							<span class="km">8 dana</span>
+						</div>
+						<div class="row stop">
+							<span class="arrow" aria-hidden="true">↑</span>
+							<span class="dest">Ne uradite ništa: nalog postaje izvršan i ulazi u registar neplaćenih kazni</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="wrap block" id="pitanja">
+				<h2>Pitanja na koja odgovaramo</h2>
+				<ul class="questions">
+					{pitanja.map((p) => <li>{p} <span class="soon">vodič uskoro</span></li>)}
+				</ul>
+			</section>
+
+			<section class="band" id="advokati">
+				<div class="wrap block two">
+					<h2>Advokati</h2>
+					<div class="people">
+						<div>
+							<h3>Luka Jagić</h3>
+							<p>Advokat. Biografija uskoro.</p>
+						</div>
+						<div>
+							<h3>Damjan Jagić</h3>
+							<p>Advokat. Biografija uskoro.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="wrap block two" id="kontakt">
+				<h2>Kontakt</h2>
+				<div>
+					<p>Pošaljite nam fotografiju naloga i reći ćemo vam koje su vaše opcije i rokovi.</p>
+					<p class="muted">Telefon i e-mail adresa biće objavljeni uskoro.</p>
+				</div>
+			</section>
+		</main>
+
+		<footer class="wrap foot">
+			<p>Sadržaj ovog sajta je opšta informacija i ne predstavlja pravni savet za vaš slučaj. Sajt je u izradi.</p>
+			<p>© {new Date().getFullYear()} Jagić Law</p>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--sign-blue: #0f4c9c;
+		--white: #ffffff;
+		--asphalt: #262b30;
+		--concrete: #e7e9ec;
+		--rok-red: #c8102e;
+		--muted: #5b636b;
+		--display: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+		--body: 'Source Serif 4 Variable', Georgia, serif;
+	}
+	* { box-sizing: border-box; }
+	html { -webkit-text-size-adjust: 100%; }
+	body {
+		margin: 0;
+		background: var(--white);
+		color: var(--asphalt);
+		font-family: var(--body);
+		font-size: 1.125rem;
+		line-height: 1.6;
+	}
+	h1, h2, h3, .mark, nav a, .sign { font-family: var(--display); }
+	a { color: var(--sign-blue); }
+	a:focus-visible { outline: 3px solid var(--rok-red); outline-offset: 3px; }
+
+	.wrap { max-width: 72rem; margin: 0 auto; padding-inline: 1rem; }
+	@media (min-width: 48rem) { .wrap { padding-inline: 2rem; } }
+
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.25rem; }
+	.mark { font-weight: 700; font-size: 1.6rem; color: var(--asphalt); text-decoration: none; letter-spacing: -0.01em; }
+	nav { display: flex; gap: 1.25rem; }
+	nav a { color: var(--asphalt); text-decoration: none; font-weight: 500; font-size: 1.1rem; }
+	nav a:hover { color: var(--sign-blue); }
+
+	.hero { display: grid; gap: 2.5rem; padding-block: 2.5rem 4rem; align-items: center; }
+	@media (min-width: 60rem) { .hero { grid-template-columns: 1fr 1.15fr; gap: 3.5rem; padding-block: 4rem 6rem; } }
+	h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); line-height: 1; margin: 0 0 1.25rem; font-weight: 700; letter-spacing: -0.015em; }
+	.lede { font-size: 1.25rem; max-width: 34ch; margin: 0; }
+
+	/* The one bold element: a blue road direction sign */
+	.sign { background: var(--sign-blue); color: var(--white); border-radius: 14px; padding: 10px; }
+	.sign-inner { border: 3px solid var(--white); border-radius: 8px; padding: 0.5rem 1.25rem; }
+	.row { display: grid; grid-template-columns: 2.2rem 1fr auto; align-items: baseline; gap: 0.75rem; padding-block: 0.9rem; font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.75rem); line-height: 1.15; }
+	.row + .row { border-top: 2px solid rgba(255, 255, 255, 0.55); }
+	.arrow { font-weight: 700; }
+	.km { font-weight: 700; white-space: nowrap; }
+	.stop .dest { grid-column: 2 / 4; font-size: 0.8em; }
+
+	.block { padding-block: 3.5rem; }
+	h2 { font-size: clamp(1.9rem, 3.5vw, 2.5rem); line-height: 1.1; margin: 0 0 1.5rem; font-weight: 700; }
+	h3 { font-size: 1.5rem; margin: 0 0 0.25rem; font-weight: 700; }
+	.two { display: grid; gap: 1rem; }
+	@media (min-width: 48rem) { .two { grid-template-columns: 16rem 1fr; gap: 2rem; } }
+
+	.questions { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
+	.questions li { padding-block: 0.9rem; border-bottom: 1px solid var(--concrete); font-size: 1.2rem; }
+	.soon { font-family: var(--display); font-size: 0.95rem; color: var(--muted); margin-left: 0.5rem; white-space: nowrap; }
+
+	.band { background: var(--concrete); }
+	.people { display: grid; gap: 1.5rem; }
+	@media (min-width: 40rem) { .people { grid-template-columns: 1fr 1fr; } }
+	.people p, #kontakt p { margin: 0 0 0.75rem; max-width: 60ch; }
+	.muted { color: var(--muted); }
+
+	.foot { padding-block: 2.5rem; border-top: 1px solid var(--concrete); color: var(--muted); font-size: 0.95rem; }
+	.foot p { margin: 0 0 0.4rem; max-width: 70ch; }
+</style>
