@@ -59,7 +59,7 @@ const jezikLink = en ? { href: '/', label: 'SR', title: 'Srpski' } : { href: '/e
 		<header class="site-header">
 			<div class="wrap header-inner">
 				<a class="logo" href={en ? '/en/' : '/'}>
-					<img src="/logo.png" alt={`${kancelarija.naziv}, ${en ? 'home' : 'početna'}`} width="175" height="175" />
+					<img src="/logo-belo.png" alt={`${kancelarija.naziv}, ${en ? 'home' : 'početna'}`} width="175" height="175" />
 				</a>
 
 				<nav class="nav" aria-label={en ? 'Main navigation' : 'Glavna navigacija'}>
@@ -190,21 +190,25 @@ const jezikLink = en ? { href: '/', label: 'SR', title: 'Srpski' } : { href: '/e
 	.placeholder-bar code { font-size: 0.85em; }
 
 	/* Header */
-	.site-header { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+	.site-header { position: sticky; top: 0; z-index: 20; background: var(--footer); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+	.site-header :focus-visible, .site-footer :focus-visible { outline-color: #fff; }
 	.header-inner { display: flex; align-items: center; justify-content: space-between; height: 5rem; }
 	.logo { display: block; }
 	.logo img { width: 4.25rem; height: 4.25rem; }
 	.nav { display: none; align-items: center; gap: 1.75rem; }
-	.nav a:not(.btn) { color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.98rem; }
-	.nav a:not(.btn):hover, .nav a[aria-current='page'] { color: var(--accent); }
-	.nav .lang { font-size: 0.85rem; font-weight: 600; border: 1px solid var(--line); border-radius: 6px; padding: 0.15rem 0.45rem; }
+	.nav a:not(.btn) { color: #dbe3ee; text-decoration: none; font-weight: 500; font-size: 0.98rem; }
+	.nav a:not(.btn):hover, .nav a[aria-current='page'] { color: #fff; }
+	.nav a[aria-current='page'] { text-decoration: underline; text-underline-offset: 0.45em; text-decoration-thickness: 2px; }
+	.nav .btn { background: #fff; border-color: #fff; color: var(--accent); }
+	.nav .btn:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent-hover); }
+	.nav .lang { font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px; padding: 0.15rem 0.45rem; }
 	@media (min-width: 52rem) { .nav { display: flex; } .mobile-menu { display: none; } }
 
 	.mobile-menu summary { list-style: none; cursor: pointer; width: 2.75rem; height: 2.75rem; display: grid; place-content: center; gap: 5px; }
 	.mobile-menu summary::-webkit-details-marker { display: none; }
-	.mobile-menu summary span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
-	.mobile-panel { position: absolute; left: 0; right: 0; top: 5rem; background: #fff; border-bottom: 1px solid var(--line); padding: 0.5rem 1rem 1rem; display: grid; }
-	.mobile-panel a { padding: 0.85rem 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; font-weight: 500; font-size: 1.1rem; }
+	.mobile-menu summary span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+	.mobile-panel { position: absolute; left: 0; right: 0; top: 5rem; background: var(--footer); border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem 1rem; display: grid; }
+	.mobile-panel a { padding: 0.85rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12); color: #fff; text-decoration: none; font-weight: 500; font-size: 1.1rem; }
 
 	/* Footer */
 	.site-footer { background: var(--footer); color: #c4ccd6; padding-top: 3.5rem; font-size: 0.97rem; }
