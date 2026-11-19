@@ -18,4 +18,4 @@ faq:
 
 Objava koja povređuje ugled ili korišćenje vaše fotografije bez dozvole mogu da nanesu štetu koja se teško popravlja. Pomažemo da se reaguje brzo: zahtevom za ispravku, uklanjanjem sadržaja ili tužbom.
 
-Radimo i sa firmama čiji su lik, zaštitni znak ili fotografije korišćeni bez dozvole.
+Radimo i sa privrednim društvima čiji su lik, zaštitni znak ili fotografije korišćeni bez dozvole.

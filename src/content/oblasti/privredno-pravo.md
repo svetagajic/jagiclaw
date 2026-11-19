@@ -1,9 +1,9 @@
 ---
 naziv: Privredno pravo
 naslov: Advokat za privredno pravo u Beogradu
-seoNaslov: Advokat za privredno pravo i osnivanje firme, Beograd | JagicLaw
+seoNaslov: Advokat za privredno pravo i osnivanje društva, Beograd | JagicLaw
 opis: "Osnivanje doo, statusne promene, odluke skupštine, osnivački akti i ugovori članova društva (SHA). Advokatska kancelarija JagicLaw, Beograd."
-kratko: Osnivanje firmi, statusne promene, odluke skupštine i ugovori članova društva.
+kratko: Osnivanje privrednih društava, statusne promene, odluke skupštine i ugovori članova društva.
 grupa: osnovna
 redosled: 1
 usluge:
@@ -23,6 +23,6 @@ faq:
     odgovor: "Ne. Prijave registraciji podnosimo elektronski ili lično u vaše ime, na osnovu punomoćja, i obaveštavamo vas kada je promena upisana."
 ---
 
-Pomažemo preduzetnicima i vlasnicima firmi da posao postave na čvrste pravne temelje: od osnivanja društva, preko odnosa među članovima, do promena koje prate rast firme.
+Pomažemo preduzetnicima i članovima privrednih društava da posao postave na čvrste pravne temelje: od osnivanja društva, preko odnosa među članovima, do promena koje prate rast društva.
 
-Najveći problemi u firmama obično ne nastaju zbog zakona, nego zbog dokumenata koji nisu predvideli ono što se kasnije desi: suvlasnik želi da izađe, treba primiti investitora, direktor se menja. Zato osnivačke akte i ugovore članova društva pišemo prema tome kako vaša firma zaista funkcioniše, a ne po šablonu.
+Najveći problemi u privrednim društvima obično ne nastaju zbog zakona, nego zbog dokumenata koji nisu predvideli ono što se kasnije desi: suvlasnik želi da izađe, treba primiti investitora, direktor se menja. Zato osnivačke akte i ugovore članova društva pišemo prema tome kako vaše društvo zaista funkcioniše, a ne po šablonu.

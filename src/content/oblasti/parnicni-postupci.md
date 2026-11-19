@@ -22,4 +22,4 @@ faq:
 
 Spor je poslednje sredstvo, ali kada do njega dođe, potrebna vam je jasna strategija od prvog podneska. Pre tužbe procenjujemo vaše izglede, troškove i trajanje, i iskreno vam kažemo da li se spor isplati.
 
-Zastupamo firme i pojedince pred osnovnim, višim, privrednim i apelacionim sudovima. Tokom celog spora znate u kojoj je fazi predmet i šta sledi.
+Zastupamo privredna društva i pojedince pred osnovnim, višim, privrednim i apelacionim sudovima. Tokom celog spora znate u kojoj je fazi predmet i šta sledi.

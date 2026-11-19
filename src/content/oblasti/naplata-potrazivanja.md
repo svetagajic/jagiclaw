@@ -1,8 +1,8 @@
 ---
 naziv: Naplata potraživanja
-naslov: Naplata potraživanja za firme i pojedince
+naslov: Naplata potraživanja za privredna društva i pojedince
 seoNaslov: Advokat za naplatu potraživanja i dugova, Beograd | JagicLaw
-opis: "Opomene pred tužbu, pregovori, poravnanja, parnični i izvršni postupak. Naplata dugova za firme i pojedince. JagicLaw, Beograd."
+opis: "Opomene pred tužbu, pregovori, poravnanja, parnični i izvršni postupak. Naplata dugova za privredna društva i pojedince. JagicLaw, Beograd."
 kratko: Opomene, pregovori, poravnanja, parnični i izvršni postupak.
 grupa: osnovna
 redosled: 5

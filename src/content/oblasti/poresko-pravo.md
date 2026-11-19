@@ -1,6 +1,6 @@
 ---
 naziv: Poresko pravo
-naslov: Poreski postupci i poreski savet za firme
+naslov: Poreski postupci i poreski savet za privredna društva
 seoNaslov: Advokat za poreske postupke i žalbe, Beograd | JagicLaw
 opis: "Poreski postupci pred Poreskom upravom, primedbe na zapisnik, žalbe i poreski aspekti poslovanja preduzetnika i doo. JagicLaw, Beograd."
 kratko: Postupci pred Poreskom upravom, primedbe na zapisnik i žalbe.
@@ -19,4 +19,4 @@ faq:
 
 Poreska kontrola se najbolje rešava dok traje, a ne posle rešenja. Na zapisnik o kontroli možete staviti primedbe, i to je često najbolja prilika da se nalazi kontrolora isprave.
 
-Zastupamo firme i preduzetnike u poreskim postupcima, od kontrole do žalbe i upravnog spora, i pomažemo da se poslovanje unapred postavi tako da poreski rizik bude što manji.
+Zastupamo privredna društva i preduzetnike u poreskim postupcima, od kontrole do žalbe i upravnog spora, i pomažemo da se poslovanje unapred postavi tako da poreski rizik bude što manji.

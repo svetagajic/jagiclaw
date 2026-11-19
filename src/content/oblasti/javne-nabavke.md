@@ -14,6 +14,6 @@ usluge:
 faq: []
 ---
 
-Ponuda na tenderu može da bude odbijena zbog formalnog nedostatka, bez obzira na cenu i kvalitet. Pomažemo firmama da pripreme ugovornu dokumentaciju koja prati ponudu: sporazume o zajedničkoj ponudi, ugovore sa podizvođačima i ostale isprave.
+Ponuda na tenderu može da bude odbijena zbog formalnog nedostatka, bez obzira na cenu i kvalitet. Pomažemo privrednim društvima da pripreme ugovornu dokumentaciju koja prati ponudu: sporazume o zajedničkoj ponudi, ugovore sa podizvođačima i ostale isprave.
 
 Pre predaje ponude pregledamo i model ugovora naručioca, da znate na šta se obavezujete ako posao dobijete.

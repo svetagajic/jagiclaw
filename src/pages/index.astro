@@ -9,7 +9,7 @@ const oblasti = await getCollection('oblasti');
 
 <Base
 	title="Advokatska kancelarija JagicLaw, Beograd | Privredno, radno i krivično pravo"
-	description="Advokati Luka Jagić i Damjan Jagić, Beograd. Kancelarija okrenuta poslovanju: osnivanje firmi, ugovori, radno pravo, nepokretnosti, naplata potraživanja, krivično i prekršajno pravo."
+	description="Advokati Luka Jagić i Damjan Jagić, Beograd. Kancelarija okrenuta poslovanju: osnivanje privrednih društava, ugovori, radno pravo, nepokretnosti, naplata potraživanja, krivično i prekršajno pravo."
 	schema={[kancelarijaSchema(oblasti.map((o) => o.data.naziv))]}
 >
 	<Pocetna />

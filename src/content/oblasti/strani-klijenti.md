@@ -1,13 +1,13 @@
 ---
 naziv: Strani klijenti
 naslov: Pravna podrška stranim licima u Srbiji
-seoNaslov: Pravna podrška strancima i stranim firmama u Srbiji | JagicLaw
-opis: "Dvojezična srpsko-engleska dokumentacija i pravna podrška stranim licima i firmama pri poslovanju u Srbiji. JagicLaw, Beograd."
+seoNaslov: Pravna podrška strancima i stranim društvima u Srbiji | JagicLaw
+opis: "Dvojezična srpsko-engleska dokumentacija i pravna podrška stranim fizičkim licima i privrednim društvima pri poslovanju u Srbiji. JagicLaw, Beograd."
 kratko: Dvojezična dokumentacija i podrška strancima pri poslovanju u Srbiji.
 grupa: dodatna
 redosled: 15
 usluge:
-  - Osnivanje firmi i ogranaka stranih društava
+  - Osnivanje privrednih društava i ogranaka stranih društava
   - Dvojezični (srpsko-engleski) ugovori i dokumenti
   - Otvaranje računa i KYC procedure
   - Zakup i kupovina nepokretnosti

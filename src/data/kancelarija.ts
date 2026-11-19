@@ -53,7 +53,7 @@ export const kancelarija = {
 		},
 		{
 			naslov: 'Uz klijenta kroz ceo život posla',
-			tekst: 'Od osnivanja firme, preko svakodnevnog poslovanja, do rasta i novih tržišta. Kada poznajemo vaš posao, savet je brži i bolji.',
+			tekst: 'Od osnivanja privrednog društva, preko svakodnevnog poslovanja, do rasta i novih tržišta. Kada poznajemo vaš posao, savet je brži i bolji.',
 		},
 	],
 
@@ -120,7 +120,7 @@ export const advokati = [
 		foto: '/advokati/damjan-jagic.jpg',
 		kratko: 'Osnivanje i organizacija privrednih društava, poslovni ugovori i usklađenost poslovanja.',
 		bio: [
-			'Damjan je advokat koji radi na osnivanju i organizaciji privrednih društava, poslovnim ugovorima i propisima koji se tiču svakodnevnog poslovanja firmi. Prati klijente kroz osnivanje društva i u daljem radu, sa fokusom na rast poslovanja i smanjenje pravnih rizika.',
+			'Damjan je advokat koji radi na osnivanju i organizaciji privrednih društava, poslovnim ugovorima i propisima koji se tiču svakodnevnog poslovanja privrednih društava. Prati klijente kroz osnivanje društva i u daljem radu, sa fokusom na rast poslovanja i smanjenje pravnih rizika.',
 			'Komunikativan je i okrenut klijentu. Trudi se da razume ciljeve svakog klijenta i da mu pruži jasnu i praktičnu pravnu podršku za njihovo ostvarenje.',
 		],
 		bioEn: [

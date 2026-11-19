@@ -10,7 +10,7 @@ usluge:
   - Procena prekršajnog naloga i zahtev za sudsko odlučivanje
   - Zastupanje pred prekršajnim sudom
   - Saobraćajni prekršaji, kazneni poeni i zaštitne mere
-  - Prekršaji iz poslovanja firmi (inspekcijski nadzor, poreski i carinski prekršaji)
+  - Prekršaji iz poslovanja privrednih društava (inspekcijski nadzor, poreski i carinski prekršaji)
   - Žalbe na presude prekršajnog suda
 faq:
   - pitanje: Dobio sam prekršajni nalog. Koliko imam vremena?
@@ -19,6 +19,6 @@ faq:
     odgovor: "Ako smatrate da prekršaj niste učinili ili da postoje nepravilnosti u nalogu, da. Ali imajte u vidu da sud, ako vas proglasi odgovornim, može izreći punu kaznu i troškove postupka. Zato je dobro da nalog pre odluke pogleda advokat."
 ---
 
-Prekršaji izgledaju sitno dok se ne saberu: kazneni poeni, zabrana upravljanja vozilom, upis u registar neplaćenih kazni ili, za firme, kazne za pravno lice i odgovorno lice istovremeno. Rokovi su kratki, često samo 8 dana.
+Prekršaji izgledaju sitno dok se ne saberu: kazneni poeni, zabrana upravljanja vozilom, upis u registar neplaćenih kazni ili, za privredna društva, kazne za pravno lice i odgovorno lice istovremeno. Rokovi su kratki, često samo 8 dana.
 
-Pregledamo nalog ili zahtev za pokretanje postupka i kažemo vam da li ima smisla da se borite. Ako ima, zastupamo vas pred prekršajnim sudom. Za firme pratimo i prekršajne postupke koji proističu iz inspekcijskog nadzora.
+Pregledamo nalog ili zahtev za pokretanje postupka i kažemo vam da li ima smisla da se borite. Ako ima, zastupamo vas pred prekršajnim sudom. Za privredna društva pratimo i prekršajne postupke koji proističu iz inspekcijskog nadzora.

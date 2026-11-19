@@ -17,6 +17,6 @@ faq:
     odgovor: "Udruženje mogu osnovati najmanje tri osnivača. Osnivači usvajaju osnivački akt i statut i biraju zastupnika, a udruženje stiče svojstvo pravnog lica upisom u registar APR."
 ---
 
-Udruženja građana, strukovna udruženja i druge neprofitne organizacije imaju svoja pravila, različita od pravila za firme. Pomažemo da se udruženje pravilno osnuje i registruje, i da statut odgovara tome kako organizacija zaista radi.
+Udruženja građana, strukovna udruženja i druge neprofitne organizacije imaju svoja pravila, različita od pravila za privredna društva. Pomažemo da se udruženje pravilno osnuje i registruje, i da statut odgovara tome kako organizacija zaista radi.
 
 Kada udruženje počne da radi sa donatorima i partnerima, pripremamo ugovore i pratimo promene koje treba prijaviti registru.

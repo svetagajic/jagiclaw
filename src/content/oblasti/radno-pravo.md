@@ -18,7 +18,7 @@ faq:
     odgovor: "Rok za tužbu sudu je 60 dana od dana kada vam je rešenje o otkazu dostavljeno. Rok je kratak i ne može se produžiti, zato je važno da se obratite advokatu odmah po prijemu rešenja."
   - pitanje: Kao poslodavac, šta mora da prethodi otkazu?
     odgovor: "Zavisi od razloga. Za većinu otkaza zbog ponašanja ili rezultata rada zaposlenom se prethodno mora dostaviti upozorenje sa obrazloženjem i rokom za izjašnjenje. Propust u postupku je najčešći razlog zbog kog sud poništava otkaz, čak i kada je razlog za otkaz postojao."
-  - pitanje: Da li firma mora da ima pravilnik o sistematizaciji?
+  - pitanje: Da li privredno društvo mora da ima pravilnik o sistematizaciji?
     odgovor: "Poslodavac koji ima više od 10 zaposlenih dužan je da donese akt o organizaciji i sistematizaciji poslova. I manjim poslodavcima preporučujemo da opis poslova jasno urede, jer se na njega oslanjaju ugovori o radu i otkazi."
 ---
 

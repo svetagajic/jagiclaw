@@ -22,4 +22,4 @@ faq:
 
 U krivičnom postupku najvažniji su prvi sati i dani. Ono što se kaže na prvom saslušanju često odredi tok celog postupka. Zato je najbolje da nas pozovete pre nego što date bilo kakvu izjavu.
 
-Branimo osumnjičene i okrivljene od saslušanja u policiji do pravosnažne presude, i zastupamo oštećene koji žele da počinilac odgovara i da im šteta bude nadoknađena. Posebno pratimo krivična dela koja proističu iz poslovanja firmi.
+Branimo osumnjičene i okrivljene od saslušanja u policiji do pravosnažne presude, i zastupamo oštećene koji žele da počinilac odgovara i da im šteta bude nadoknađena. Posebno pratimo krivična dela koja proističu iz poslovanja privrednih društava.
