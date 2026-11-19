@@ -18,11 +18,13 @@
 
 Sve se menja u jednom fajlu: `src/data/kancelarija.ts`.
 
-- [ ] Pravi telefon, e-mail, adresa i radno vreme
+- [x] Pravi telefon, e-mail, adresa i radno vreme (iz ponude, 19. 11. 2026)
 - [ ] Odluka: da li dajemo i Viber/WhatsApp broj (ljudi u Srbiji rado šalju sliku dokumenta tako)
-- [ ] Biografije Luke i Damjana: obrazovanje, godine iskustva, oblasti kojima se najviše bave, jezici, upis u Advokatsku komoru
-- [ ] Profesionalne fotografije oba advokata (sada su na sajtu krugovi sa inicijalima)
-- [ ] Kada je sve gore upisano, staviti `podaciProvereni: true` (nestaje žuta traka na vrhu sajta)
+- [x] Biografije Luke i Damjana, na srpskom i engleskom (iz ponude; Damjan je od novembra 2026. advokat)
+- [x] Fotografije oba advokata (iz ponude)
+- [ ] Fotografije u većoj rezoluciji (sada su oko 600 px širine, pa su na velikim ekranima blago mutne)
+- [ ] Logo u vektorskom formatu (SVG ili PDF od dizajnera); sada je PNG izvučen iz ponude, pa je sitan natpis „JAGIĆ LAW“ manje oštar
+- [x] Staviti `podaciProvereni: true` (žuta traka je uklonjena)
 
 ### Pravni pregled tekstova (Advokati)
 
@@ -41,16 +43,17 @@ Posebno proveriti ove konkretne tvrdnje:
 | `prekrsajno-pravo.md` | Rok od 8 dana; plaćanje polovine kazne; posledice upisa u Registar neplaćenih kazni |
 | `poresko-pravo.md` | Rok za žalbu na poresko rešenje je 15 dana; žalba po pravilu ne odlaže plaćanje |
 | `naknada-stete.md` | Zastarelost 3 godine od saznanja, a najkasnije 5 godina od nastanka štete |
+| `zastita-podataka-o-licnosti.md` | Prijava povrede podataka Povereniku u roku od 72 sata; primena zakona na strane rukovaoce i obaveza predstavnika u Srbiji; odnos sa GDPR-om |
 | `bankarska-uskladjenost.md` | Dokumenta za otvaranje računa firme sa stranim osnivačem (apostil, sudski tumač) |
 | sve ostale | Opšti tekst i spisak usluga: da li zaista radite sve što piše? |
 
-- [ ] Pročitane i ispravljene sve stranice oblasti (15)
+- [ ] Pročitane i ispravljene sve stranice oblasti (16)
 - [ ] Pročitana početna strana, Advokati, Kontakt i stranica na engleskom (`/en/`)
 
 ### Pravila struke (Advokati)
 
 - [ ] Proveriti sajt prema Kodeksu profesionalne etike advokata (pravila o oglašavanju i predstavljanju)
-- [ ] Odluka o nazivu: „JagicLaw“, „Jagić Law“ ili zvanični naziv pod kojim ste upisani u imenik. Naziv treba da bude isti na sajtu, Google profilu i svuda gde vas ima.
+- [ ] Odluka o nazivu: „JagicLaw“, „Jagić Law“ ili zvanični naziv pod kojim ste upisani u imenik. Naziv treba da bude isti na sajtu, Google profilu i svuda gde vas ima. Logo kaže „JAGIĆ LAW“, a sajt piše „JagicLaw“.
 - [ ] Ove rečenice su obećanja; zadržati ih samo ako su tačne:
   - „Na vašem predmetu radi advokat sa kojim ste razgovarali, od prvog sastanka do kraja.“
   - „Pre početka rada dogovaramo obim posla i način obračuna naknade.“

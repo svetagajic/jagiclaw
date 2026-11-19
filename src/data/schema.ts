@@ -12,7 +12,7 @@ export function kancelarijaSchema(oblasti: string[] = []) {
 		url: kancelarija.url,
 		// Kontakt podaci idu u schema tek kada su pravi, da Google ne zapamti primere.
 		...(kancelarija.podaciProvereni && {
-			telephone: kancelarija.telefon,
+			telephone: kancelarija.telefonMedjunarodni,
 			email: kancelarija.email,
 			address: {
 				'@type': 'PostalAddress',
@@ -21,13 +21,25 @@ export function kancelarijaSchema(oblasti: string[] = []) {
 				addressLocality: kancelarija.grad,
 				addressCountry: 'RS',
 			},
+			openingHoursSpecification: {
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: kancelarija.radniDani,
+				opens: kancelarija.otvara,
+				closes: kancelarija.zatvara,
+			},
 		}),
 		areaServed: [
 			{ '@type': 'City', name: 'Beograd' },
 			{ '@type': 'Country', name: 'Srbija' },
 		],
 		knowsLanguage: ['sr', 'en'],
-		employee: advokati.map((a) => ({ '@type': 'Person', name: a.ime, jobTitle: a.zvanje })),
+		employee: advokati.map((a) => ({
+			'@type': 'Person',
+			name: a.ime,
+			jobTitle: a.zvanje,
+			image: `${kancelarija.url}${a.foto}`,
+			url: `${kancelarija.url}/advokati/#${a.slug}`,
+		})),
 		...(oblasti.length && { knowsAbout: oblasti }),
 	};
 }

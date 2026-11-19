@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import KontaktCta from '../../components/KontaktCta.astro';
-import { advokati, telefonLink, emailLink } from '../../data/kancelarija';
+import { advokati, kancelarija, telefonLink, emailLink } from '../../data/kancelarija';
 import { kancelarijaSchema } from '../../data/schema';
 
 const services = [
@@ -9,6 +9,7 @@ const services = [
 	{ title: 'Commercial contracts', text: 'Distribution, cooperation, lease and sale agreements, drafted in English and Serbian side by side.' },
 	{ title: 'Bank accounts and KYC', text: 'Preparing documents for opening corporate and personal bank accounts, beneficial ownership, apostille and certified translations.' },
 	{ title: 'Real estate', text: 'Due diligence before purchase, sale and lease agreements, notarisation and registration in the cadastre.' },
+	{ title: 'Data protection', text: 'Compliance with the Serbian Personal Data Protection Act (largely modelled on the GDPR): privacy policies, records of processing, processor agreements and appointing a representative in Serbia.' },
 	{ title: 'Employment', text: 'Employment contracts, internal rules and terminations for foreign employers in Serbia.' },
 	{ title: 'Disputes and debt collection', text: 'Representation before Serbian courts in commercial, employment and civil disputes, and enforcement of claims.' },
 	{ title: 'Tax procedures', text: 'Representation before the Tax Administration, objections to audit reports and appeals.' },
@@ -63,15 +64,19 @@ const services = [
 			</div>
 			<div class="people">
 				{advokati.map((a) => (
-					<div class="person">
-						<div class="avatar" aria-hidden="true">{a.ime.split(' ').map((d) => d[0]).join('')}</div>
-						<div>
+					<article class="person">
+						<img class="photo" src={a.foto} alt={`${a.ime}, ${a.zvanjeEn.toLowerCase()}`} width="600" height="434" loading="lazy" />
+						<div class="person-text">
 							<h3>{a.ime}</h3>
-							<p class="role">Attorney at law</p>
+							<p class="role">{a.zvanjeEn}</p>
+							{a.bioEn.map((p) => <p>{p}</p>)}
 						</div>
-					</div>
+					</article>
 				))}
 			</div>
+			<ul class="checks why">
+				{kancelarija.prednostiEn.map((p) => <li>{p}</li>)}
+			</ul>
 		</div>
 	</section>
 
@@ -85,8 +90,11 @@ const services = [
 	.hero .lede { margin-bottom: 2rem; }
 	.people { display: grid; gap: 1rem; }
 	@media (min-width: 40rem) { .people { grid-template-columns: 1fr 1fr; } }
-	.person { display: flex; align-items: center; gap: 1.1rem; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; }
-	.avatar { width: 3.5rem; height: 3.5rem; flex: none; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 600; }
-	.person h3 { margin: 0; }
-	.role { margin: 0; color: var(--muted); }
+	.people { gap: 1.5rem; }
+	.person { background: var(--surface); border-radius: 18px; overflow: hidden; }
+	.photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; }
+	.person-text { padding: 1.5rem; }
+	.person h3 { font-size: 1.4rem; margin: 0; }
+	.role { margin: 0 0 0.9rem; color: var(--accent); font-weight: 600; }
+	.why { margin-top: 2.5rem; max-width: 46rem; }
 </style>
