@@ -32,8 +32,8 @@ export const kancelarija = {
 	oNama: {
 		naslov: 'Kancelarija okrenuta poslovanju',
 		tekst: [
-			'Mi smo Luka Jagić i Damjan Jagić, advokati iz Beograda. Verujemo da advokat ne treba da bude neko koga zovete tek kada je problem već nastao, već neko s kim se posavetujete pre nego što donesete važnu odluku.',
-			'Zato radimo blisko sa klijentima, firmama, preduzetnicima i građanima, i na svakom predmetu zajedno. Lukinih deset godina iskustva u privrednom i radnom pravu i zaštiti podataka o ličnosti daje nam sigurnost, a rad u dvoje omogućava da svakom predmetu posvetimo punu pažnju.',
+			'Mi smo Luka Jagić i Damjan Jagić, advokati iz Beograda. Verujemo da advokat ne treba da bude neko koga zovete tek kada je problem već nastao, već neko sa kim se savetujete pre nego što donesete važnu odluku.',
+			'Zato radimo blisko sa klijentima, firmama, preduzetnicima i građanima. Svaki predmet vodimo zajedno, od prvog razgovora do kraja. Iza nas je deset godina advokatske prakse u privrednom i radnom pravu i zaštiti podataka o ličnosti, a kao mlad tim od dvoje advokata svakom predmetu posvećujemo punu pažnju.',
 		],
 	},
 
@@ -62,7 +62,7 @@ export const kancelarija = {
 		naslov: 'A law office focused on business',
 		tekst: [
 			'We are Luka Jagić and Damjan Jagić, attorneys at law in Belgrade. We believe a lawyer should not be someone you call only once a problem has arisen, but someone you consult before you make an important decision.',
-			'That is why we work closely with our clients, companies, entrepreneurs and individuals alike, and on every matter together. Luka’s ten years of experience in corporate and employment law and data protection give us confidence, and working as a team of two lets us give every matter our full attention.',
+			'That is why we work closely with our clients: companies, entrepreneurs and individuals. We handle every matter together, from the first conversation to the end. We bring ten years of legal practice in corporate and employment law and data protection, and as a young team of two attorneys we give every matter our full attention.',
 		],
 	},
 	poglediEn: [
