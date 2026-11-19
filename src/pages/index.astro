@@ -31,8 +31,16 @@ const koraci = [
 	schema={[kancelarijaSchema(oblasti.map((o) => o.data.naziv))]}
 >
 	<section class="hero">
-		<div class="wrap hero-grid">
-			<div>
+		<!-- Pozadina: Beograd, spomenik Pobedniku na Kalemegdanu i ušće Save u Dunav, crno-belo, sa sporim zumiranjem.
+		     Fotografija: Dimitrije Milenković, Unsplash (Unsplash licenca, slobodna za komercijalnu upotrebu). -->
+		<div class="hero-bg" aria-hidden="true">
+			<picture>
+				<source media="(max-width: 47.99rem)" srcset="/beograd/hero-1200.jpg" />
+				<img src="/beograd/hero-2000.jpg" alt="" width="2000" height="1125" fetchpriority="high" />
+			</picture>
+		</div>
+		<div class="wrap">
+			<div class="hero-text">
 				<p class="eyebrow">Advokatska kancelarija · {kancelarija.grad}</p>
 				<h1>Pravna podrška za vaše poslovanje i vaše sporove</h1>
 				<p class="lede">
@@ -44,13 +52,15 @@ const koraci = [
 					<a class="btn btn-ghost" href="/kontakt/">Pošaljite upit</a>
 				</div>
 			</div>
+		</div>
+	</section>
 
-			<div class="quick">
-				<p class="quick-title">Najčešće nam se obraćaju jer:</p>
-				<ul>
-					{brzo.map((b) => <li><a href={b.href}>{b.tekst}<span aria-hidden="true">→</span></a></li>)}
-				</ul>
-			</div>
+	<section class="quick" aria-labelledby="quick-title">
+		<div class="wrap quick-inner">
+			<p class="quick-title" id="quick-title">Najčešće nam se obraćaju jer:</p>
+			<ul>
+				{brzo.map((b) => <li><a href={b.href}>{b.tekst}<span aria-hidden="true">→</span></a></li>)}
+			</ul>
 		</div>
 	</section>
 
@@ -140,20 +150,43 @@ const koraci = [
 </Base>
 
 <style>
-	.hero { padding-block: 3rem 4rem; background: linear-gradient(180deg, var(--surface) 0%, #fff 100%); }
-	@media (min-width: 48rem) { .hero { padding-block: 5rem 6rem; } }
-	.hero-grid { display: grid; gap: 3rem; align-items: center; }
-	@media (min-width: 60rem) { .hero-grid { grid-template-columns: 1.35fr 1fr; gap: 4rem; } }
-	.hero h1 { max-width: 16ch; }
-	.hero .lede { margin-bottom: 2rem; }
+	/* Hero: crno-bela fotografija Beograda, niskog kontrasta, sa sporim zumiranjem u petlji */
+	.hero { position: relative; overflow: hidden; isolation: isolate; background: var(--footer); color: #e6ebf2; padding-block: 4rem 4.5rem; min-height: calc(100svh - 5rem); display: flex; align-items: center; }
+	@media (min-width: 48rem) { .hero { padding-block: 6rem; } }
+	.hero-bg { position: absolute; inset: 0; z-index: -1; }
+	/* Na širokim ekranima fotografiju širimo udesno, da Pobednik stoji desno od teksta */
+	.hero-bg picture { position: absolute; inset: 0; display: block; }
+	@media (min-width: 60rem) { .hero-bg picture { inset: 0 -28% 0 0; } }
+	.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; filter: grayscale(1) contrast(0.82) brightness(0.92); transform-origin: 58% 35%; animation: beograd-zoom 32s ease-in-out infinite alternate; will-change: transform; }
+	/* Tamni sloj preko fotografije: jači levo ispod teksta, slabiji desno da se vidi Kalemegdan */
+	.hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(7, 26, 51, 0.85) 0%, rgba(7, 26, 51, 0.6) 42%, rgba(7, 26, 51, 0.22) 75%, rgba(7, 26, 51, 0.3) 100%); }
+	@media (max-width: 47.99rem) { .hero-bg::after { background: rgba(7, 26, 51, 0.66); } }
+	@keyframes beograd-zoom {
+		from { transform: scale(1) translate3d(0, 0, 0); }
+		to { transform: scale(1.1) translate3d(-1%, 1%, 0); }
+	}
+	@media (prefers-reduced-motion: reduce) { .hero-bg img { animation: none; } }
 
-	.quick { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; box-shadow: 0 24px 50px -32px rgba(14, 22, 33, 0.35); }
-	.quick-title { font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
-	.quick ul { list-style: none; margin: 0; padding: 0; }
-	.quick li + li { border-top: 1px solid var(--line); }
-	.quick a { display: flex; justify-content: space-between; gap: 1rem; padding: 0.85rem 0; color: var(--text); text-decoration: none; font-weight: 500; }
+	.hero-text { max-width: 38rem; }
+	.hero h1 { max-width: 16ch; color: #fff; }
+	.hero .eyebrow { color: #c9d4e3; }
+	.hero .lede { margin-bottom: 2rem; color: #d5dde8; }
+	.hero .btn { background: #fff; border-color: #fff; color: var(--accent); }
+	.hero .btn:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent-hover); }
+	.hero .btn-ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+	.hero .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; color: #fff; }
+	.hero :focus-visible { outline-color: #fff; }
+
+	/* Traka sa brzim linkovima odmah ispod fotografije */
+	.quick { background: #fff; border-bottom: 1px solid var(--line); padding-block: 2rem; }
+	.quick-inner { display: grid; gap: 1rem; }
+	.quick-title { font-weight: 600; color: var(--ink); margin: 0; }
+	.quick ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+	@media (min-width: 40rem) { .quick ul { grid-template-columns: repeat(2, 1fr); } }
+	@media (min-width: 64rem) { .quick ul { grid-template-columns: repeat(3, 1fr); } }
+	.quick a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 1.1rem; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-weight: 500; transition: border-color 0.15s, color 0.15s; }
 	.quick a span { color: var(--accent); transition: transform 0.15s; }
-	.quick a:hover { color: var(--accent); }
+	.quick a:hover { border-color: var(--accent); color: var(--accent); }
 	.quick a:hover span { transform: translateX(3px); }
 
 	.also { margin-top: 2.5rem; }
