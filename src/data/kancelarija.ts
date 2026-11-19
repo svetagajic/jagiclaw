@@ -27,18 +27,43 @@ export const kancelarija = {
 
 	jezici: ['srpski', 'engleski'],
 
+	// Početna strana, deo "O nama". Tekst je izabrao Damjan (19. 11. 2026).
+	oNama: {
+		naslov: 'Kancelarija okrenuta poslovanju',
+		tekst: [
+			'Mi smo Luka Jagić i Damjan Jagić, advokati iz Beograda. Verujemo da advokat ne treba da bude neko koga zovete tek kada je problem već nastao, već neko s kim se posavetujete pre nego što donesete važnu odluku.',
+			'Zato radimo blisko sa klijentima, firmama, preduzetnicima i građanima, i na svakom predmetu zajedno. Lukinih deset godina iskustva u privrednom i radnom pravu i zaštiti podataka o ličnosti daje nam sigurnost, a rad u dvoje omogućava da svakom predmetu posvetimo punu pažnju.',
+		],
+	},
+
+	// Početna strana, deo "Kako gledamo na pravo". NACRT: prepraviti po želji.
+	pogledi: [
+		{
+			naslov: 'Pravo treba da služi poslu',
+			tekst: 'Pravni savet vredi onoliko koliko pomaže da posao ide dalje. Pre nego što kažemo šta je rizično, pitamo šta želite da postignete, pa tražimo put da to uradite bezbedno.',
+		},
+		{
+			naslov: 'Jasno, bez pravničkog jezika',
+			tekst: 'Svaki dokument koji potpisujete treba da razumete. Objašnjavamo jednostavno i dajemo konkretnu preporuku, a ne spisak mogućnosti.',
+		},
+		{
+			naslov: 'Bolje sprečiti nego voditi spor',
+			tekst: 'Najjeftiniji spor je onaj koji se nikad ne desi. Zato se trudimo oko dobrih ugovora i jasnih pravila pre nego što problem nastane.',
+		},
+		{
+			naslov: 'Uz klijenta kroz ceo život posla',
+			tekst: 'Od osnivanja firme, preko svakodnevnog poslovanja, do rasta i novih tržišta. Kada poznajemo vaš posao, savet je brži i bolji.',
+		},
+	],
+
 	// Kratko o kancelariji, za stranicu Advokati.
 	prednosti: [
-		'Mlad tim sa iskustvom iz međunarodnih kompanija i Big Four',
 		'Pristup prilagođen klijentu, a po dogovoru i van redovnog radnog vremena',
 		'Multidisciplinarni pristup: pravo i poslovanje zajedno',
-		'Članovi Advokatske komore Srbije',
 	],
 	prednostiEn: [
-		'A young team with experience in international companies and the Big Four',
 		'Client-tailored approach, with meetings outside regular hours by appointment',
 		'Multidisciplinary approach combining law and business',
-		'Members of the Serbian Bar Association',
 	],
 };
 
@@ -65,13 +90,13 @@ export const advokati = [
 		zvanje: 'Advokat',
 		zvanjeEn: 'Attorney at law',
 		foto: '/advokati/damjan-jagic.jpg',
-		kratko: 'Organizacija privrednih društava, poslovni ugovori i usklađenost poslovanja.',
+		kratko: 'Osnivanje i organizacija privrednih društava, poslovni ugovori i usklađenost poslovanja.',
 		bio: [
-			'Damjan je advokat sa iskustvom u organizaciji privrednih društava, poslovnim ugovorima i propisima koji se tiču svakodnevnog poslovanja firmi. Vodi klijente kroz osnivanje društva i prati ih u daljem radu, sa fokusom na rast poslovanja i smanjenje pravnih rizika.',
+			'Damjan je advokat koji radi na osnivanju i organizaciji privrednih društava, poslovnim ugovorima i propisima koji se tiču svakodnevnog poslovanja firmi. Prati klijente kroz osnivanje društva i u daljem radu, sa fokusom na rast poslovanja i smanjenje pravnih rizika.',
 			'Komunikativan je i okrenut klijentu. Trudi se da razume ciljeve svakog klijenta i da mu pruži jasnu i praktičnu pravnu podršku za njihovo ostvarenje.',
 		],
 		bioEn: [
-			'Damjan is an attorney experienced in corporate structuring, commercial agreements and the regulatory requirements of day-to-day business operations. He supports clients throughout company setup and ongoing compliance, with a focus on scalability and risk mitigation.',
+			'Damjan is an attorney working on corporate structuring, commercial agreements and the regulatory requirements of day-to-day business operations. He supports clients throughout company setup and ongoing compliance, with a focus on scalability and risk mitigation.',
 			'He is communicative and client-oriented, with a proactive approach focused on understanding each client’s objectives and providing clear, practical legal support.',
 		],
 	},

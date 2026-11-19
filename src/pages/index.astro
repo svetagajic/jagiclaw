@@ -27,9 +27,10 @@ const koraci = [
 
 <Base
 	title="Advokatska kancelarija JagicLaw, Beograd | Privredno, radno i krivično pravo"
-	description="Advokati Luka i Damjan Jagić, Beograd. Osnivanje firmi, ugovori, radno pravo, nepokretnosti, naplata potraživanja, krivično i prekršajno pravo. Srpski i engleski."
+	description="Advokati Luka Jagić i Damjan Jagić, Beograd. Kancelarija okrenuta poslovanju: osnivanje firmi, ugovori, radno pravo, nepokretnosti, naplata potraživanja, krivično i prekršajno pravo."
 	schema={[kancelarijaSchema(oblasti.map((o) => o.data.naziv))]}
 >
+	<!-- 1. NASLOVNI DEO: ko smo, preko fotografije Beograda -->
 	<section class="hero">
 		<!-- Pozadina: Beograd, spomenik Pobedniku na Kalemegdanu i ušće Save u Dunav, crno-belo, sa sporim zumiranjem.
 		     Fotografija: Dimitrije Milenković, Unsplash (Unsplash licenca, slobodna za komercijalnu upotrebu). -->
@@ -42,35 +43,86 @@ const koraci = [
 		<div class="wrap">
 			<div class="hero-text">
 				<p class="eyebrow">Advokatska kancelarija · {kancelarija.grad}</p>
-				<h1>Pravna podrška za vaše poslovanje i vaše sporove</h1>
+				<h1>Pravo u službi vašeg poslovanja</h1>
 				<p class="lede">
-					Advokati Luka i Damjan Jagić. Pomažemo firmama, preduzetnicima i građanima: od osnivanja društva i ugovora,
-					preko radnih odnosa i nekretnina, do zastupanja pred sudom. Na srpskom i engleskom.
+					Spajamo pravo i poslovanje: jasni i praktični saveti koji vam pomažu da rastete, a ne samo da izbegnete rizik.
 				</p>
 				<div class="btn-row">
-					<a class="btn" href={telefonLink}>Pozovite nas</a>
-					<a class="btn btn-ghost" href="/kontakt/">Pošaljite upit</a>
+					<a class="btn" href="#o-nama">Upoznajte nas</a>
+					<a class="btn btn-ghost" href={telefonLink}>Pozovite nas</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="quick" aria-labelledby="quick-title">
-		<div class="wrap quick-inner">
-			<p class="quick-title" id="quick-title">Najčešće nam se obraćaju jer:</p>
-			<ul>
-				{brzo.map((b) => <li><a href={b.href}>{b.tekst}<span aria-hidden="true">→</span></a></li>)}
-			</ul>
+	<!-- 2. O NAMA -->
+	<section class="section" id="o-nama">
+		<div class="wrap about">
+			<div>
+				<p class="eyebrow">O nama</p>
+				<h2>{kancelarija.oNama.naslov}</h2>
+			</div>
+			<div class="about-text">
+				{kancelarija.oNama.tekst.map((p) => <p>{p}</p>)}
+			</div>
 		</div>
 	</section>
 
-	<section class="section section-surface" id="oblasti">
+	<!-- 3. KAKO GLEDAMO NA PRAVO -->
+	<section class="section section-dark">
 		<div class="wrap">
 			<div class="section-head">
-				<p class="eyebrow">Oblasti rada</p>
-				<h2>Čime se bavimo</h2>
-				<p>Najviše radimo sa firmama i preduzetnicima, a zastupamo i građane u sporovima, krivičnim i prekršajnim postupcima.</p>
+				<p class="eyebrow">Naš pristup</p>
+				<h2>Kako gledamo na pravo</h2>
 			</div>
+			<ol class="views">
+				{kancelarija.pogledi.map((p, i) => (
+					<li>
+						<span class="view-num">{String(i + 1).padStart(2, '0')}</span>
+						<h3>{p.naslov}</h3>
+						<p>{p.tekst}</p>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<!-- 4. ADVOKATI -->
+	<section class="section">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Advokati</p>
+				<h2>Ko će raditi na vašem predmetu</h2>
+			</div>
+			<div class="lawyers">
+				{advokati.map((a) => (
+					<article class="lawyer">
+						<img src={a.foto} alt={`${a.ime}, ${a.zvanje.toLowerCase()}`} width="600" height="434" loading="lazy" />
+						<div class="lawyer-text">
+							<h3>{a.ime}</h3>
+							<p class="role">{a.zvanje}</p>
+							<p>{a.bio[0]}</p>
+							<a href={`/advokati/#${a.slug}`}>Više o {a.ime.split(' ')[0] === 'Luka' ? 'Luki' : 'Damjanu'} →</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. UPITNIK: od pitanja klijenta do odgovora -->
+	<section class="section section-surface" id="pitanja">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Kako vam možemo pomoći</p>
+				<h2>S čim nam se najčešće obraćate?</h2>
+				<p>Izaberite situaciju koja liči na vašu i pročitajte šta radimo i odgovore na najčešća pitanja.</p>
+			</div>
+			<ul class="quick">
+				{brzo.map((b) => <li><a href={b.href}>{b.tekst}<span aria-hidden="true">→</span></a></li>)}
+			</ul>
+
+			<h3 class="sub">Sve oblasti rada</h3>
 			<div class="cards">
 				{osnovne.map((o) => (
 					<a class="card" href={`/oblasti/${o.id}/`}>
@@ -89,6 +141,7 @@ const koraci = [
 		</div>
 	</section>
 
+	<!-- 6. KAKO RADIMO -->
 	<section class="section">
 		<div class="wrap">
 			<div class="section-head">
@@ -107,30 +160,8 @@ const koraci = [
 		</div>
 	</section>
 
+	<!-- 7. STRANI KLIJENTI -->
 	<section class="section section-surface">
-		<div class="wrap split">
-			<div>
-				<p class="eyebrow">Advokati</p>
-				<h2>Ko će raditi na vašem predmetu</h2>
-				<p class="muted-text">Na vašem predmetu radi advokat sa kojim ste razgovarali, od prvog sastanka do kraja.</p>
-				<a href="/advokati/">Više o nama →</a>
-			</div>
-			<div class="people">
-				{advokati.map((a) => (
-					<a class="person" href={`/advokati/#${a.slug}`}>
-						<img class="avatar" src={a.foto} alt="" width="600" height="434" loading="lazy" />
-						<div>
-							<h3>{a.ime}</h3>
-							<p class="role">{a.zvanje}</p>
-							<p class="short">{a.kratko}</p>
-						</div>
-					</a>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="section">
 		<div class="wrap split">
 			<div>
 				<p class="eyebrow">For international clients</p>
@@ -139,7 +170,7 @@ const koraci = [
 			<div>
 				<p>
 					We advise foreign companies and individuals in English: company formation, bilingual contracts, bank accounts and KYC,
-					real estate and employment.
+					real estate, employment and data protection.
 				</p>
 				<a href="/en/" hreflang="en">Read more in English →</a>
 			</div>
@@ -168,7 +199,7 @@ const koraci = [
 	@media (prefers-reduced-motion: reduce) { .hero-bg img { animation: none; } }
 
 	.hero-text { max-width: 38rem; }
-	.hero h1 { max-width: 16ch; color: #fff; }
+	.hero h1 { max-width: 14ch; color: #fff; }
 	.hero .eyebrow { color: #c9d4e3; }
 	.hero .lede { margin-bottom: 2rem; color: #d5dde8; }
 	.hero .btn { background: #fff; border-color: #fff; color: var(--accent); }
@@ -177,21 +208,46 @@ const koraci = [
 	.hero .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; color: #fff; }
 	.hero :focus-visible { outline-color: #fff; }
 
-	/* Traka sa brzim linkovima odmah ispod fotografije */
-	.quick { background: #fff; border-bottom: 1px solid var(--line); padding-block: 2rem; }
-	.quick-inner { display: grid; gap: 1rem; }
-	.quick-title { font-weight: 600; color: var(--ink); margin: 0; }
-	.quick ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
-	@media (min-width: 40rem) { .quick ul { grid-template-columns: repeat(2, 1fr); } }
-	@media (min-width: 64rem) { .quick ul { grid-template-columns: repeat(3, 1fr); } }
-	.quick a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 1.1rem; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-weight: 500; transition: border-color 0.15s, color 0.15s; }
+	/* O nama */
+	.about { display: grid; gap: 1.5rem; }
+	@media (min-width: 56rem) { .about { grid-template-columns: 1fr 1.4fr; gap: 4rem; } }
+	.about h2 { max-width: 14ch; }
+	.about-text p { font-size: 1.15rem; color: var(--text); }
+
+	/* Kako gledamo na pravo: tamni deo u boji logotipa */
+	.section-dark { background: var(--footer); color: #c9d4e3; }
+	.section-dark h2, .section-dark h3 { color: #fff; }
+	.section-dark .eyebrow { color: #9fb3cf; }
+	.views { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.25rem; }
+	@media (min-width: 48rem) { .views { grid-template-columns: repeat(2, 1fr); gap: 3rem 4rem; } }
+	.views li { border-top: 1px solid rgba(255, 255, 255, 0.18); padding-top: 1.4rem; }
+	.view-num { display: block; color: #9fb3cf; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }
+	.views h3 { font-size: 1.45rem; margin-bottom: 0.6rem; }
+	.views p { margin: 0; max-width: 34rem; }
+
+	/* Advokati */
+	.lawyers { display: grid; gap: 1.5rem; }
+	@media (min-width: 52rem) { .lawyers { grid-template-columns: 1fr 1fr; align-items: start; } }
+	.lawyer { background: var(--surface); border-radius: 18px; overflow: hidden; }
+	.lawyer img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center 30%; }
+	.lawyer-text { padding: 1.6rem 1.75rem 1.9rem; }
+	.lawyer h3 { font-size: 1.45rem; margin: 0; }
+	.role { color: var(--accent); font-weight: 600; margin: 0 0 0.9rem; }
+	.lawyer-text a { font-weight: 600; text-decoration: none; }
+
+	/* Upitnik */
+	.quick { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+	@media (min-width: 40rem) { .quick { grid-template-columns: repeat(2, 1fr); } }
+	@media (min-width: 64rem) { .quick { grid-template-columns: repeat(3, 1fr); } }
+	.quick a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-weight: 500; transition: border-color 0.15s, color 0.15s; }
 	.quick a span { color: var(--accent); transition: transform 0.15s; }
 	.quick a:hover { border-color: var(--accent); color: var(--accent); }
 	.quick a:hover span { transform: translateX(3px); }
-
+	.sub { font-size: 1.35rem; margin: 3.5rem 0 1.25rem; }
 	.also { margin-top: 2.5rem; }
 	.also-title { font-weight: 600; color: var(--ink); }
 
+	/* Kako radimo */
 	.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
 	@media (min-width: 52rem) { .steps { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
 	.steps li { border-top: 2px solid var(--ink); padding-top: 1.25rem; }
@@ -200,12 +256,4 @@ const koraci = [
 
 	.split { display: grid; gap: 2rem; }
 	@media (min-width: 52rem) { .split { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; } }
-	.muted-text { color: var(--muted); }
-	.people { display: grid; gap: 1rem; }
-	.person { display: flex; align-items: center; gap: 1.25rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; text-decoration: none; color: var(--text); transition: border-color 0.15s; }
-	a.person:hover { border-color: var(--accent); color: var(--text); }
-	.avatar { width: 5.5rem; height: 5.5rem; flex: none; border-radius: 50%; object-fit: cover; object-position: center 25%; }
-	.person h3 { margin: 0; }
-	.role { margin: 0; color: var(--accent); font-weight: 600; font-size: 0.95rem; }
-	.short { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
 </style>
