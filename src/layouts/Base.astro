@@ -48,6 +48,10 @@ const jezikLink = en ? { href: '/', label: 'SR', title: 'Srpski' } : { href: '/e
 		<meta property="og:locale" content={en ? 'en_US' : 'sr_RS'} />
 
 		{schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+		<!-- Oznaka da JavaScript radi: tek tada sakrivamo elemente koji se pojavljuju pri skrolovanju.
+		     Bez JavaScript-a (i za Google) sav sadržaj je vidljiv odmah. -->
+		<script is:inline>document.documentElement.classList.add('js');</script>
 	</head>
 	<body>
 		{!kancelarija.podaciProvereni && (
@@ -116,6 +120,33 @@ const jezikLink = en ? { href: '/', label: 'SR', title: 'Srpski' } : { href: '/e
 				<p>© {new Date().getFullYear()} {kancelarija.punNaziv}</p>
 			</div>
 		</footer>
+
+		<script>
+			// Pokreti pri skrolovanju: element sa atributom data-reveal dobija klasu "is-visible"
+			// kada uđe u ekran. Svaki element se pojavi samo jednom.
+			const elementi = document.querySelectorAll('[data-reveal]');
+			if (!('IntersectionObserver' in window)) {
+				elementi.forEach((el) => el.classList.add('is-visible'));
+			} else {
+				const posmatrac = new IntersectionObserver(
+					(unosi) => {
+						for (const unos of unosi) {
+							if (unos.isIntersecting) {
+								const el = unos.target;
+								el.classList.add('is-visible');
+								posmatrac.unobserve(el);
+								// Kad se pojavi, element se vraća u normalno stanje (npr. kartice opet reaguju na miša bez kašnjenja)
+								el.addEventListener('transitionend', (e) => {
+									if (e.propertyName === 'transform') el.removeAttribute('data-reveal');
+								});
+							}
+						}
+					},
+					{ rootMargin: '0px 0px -10% 0px', threshold: 0.12 },
+				);
+				elementi.forEach((el) => posmatrac.observe(el));
+			}
+		</script>
 
 		<div class="mobile-cta" aria-label={en ? 'Quick contact' : 'Brzi kontakt'}>
 			<a class="btn" href={telefonLink}>{en ? 'Call' : 'Pozovite'}</a>
@@ -188,6 +219,24 @@ const jezikLink = en ? { href: '/', label: 'SR', title: 'Srpski' } : { href: '/e
 	.btn-ghost:hover { background: var(--accent-soft); color: var(--accent-hover); }
 	.btn-small { padding: 0.5rem 1rem; font-size: 0.95rem; }
 	.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+	/* Pokreti pri skrolovanju.
+	   data-reveal: element dolazi blago odozdo i postaje vidljiv.
+	   data-reveal="left" / "right": dolazi sa strane. data-reveal="zoom": blago se uvećava.
+	   style="--i: 2" pravi malo kašnjenje, da elementi u nizu dolaze jedan za drugim. */
+	html.js [data-reveal] {
+		opacity: 0;
+		transform: translate3d(0, 28px, 0);
+		transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+		transition-delay: calc(var(--i, 0) * 110ms);
+	}
+	html.js [data-reveal='left'] { transform: translate3d(-36px, 0, 0); }
+	html.js [data-reveal='right'] { transform: translate3d(36px, 0, 0); }
+	html.js [data-reveal='zoom'] { transform: scale(0.96); }
+	html.js [data-reveal].is-visible { opacity: 1; transform: none; }
+	@media (prefers-reduced-motion: reduce) {
+		html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+	}
 
 	/* Placeholder reminder */
 	.placeholder-bar { background: var(--warn); color: #4a3b00; font-size: 0.9rem; text-align: center; padding: 0.5rem 1rem; }

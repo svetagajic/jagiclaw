@@ -115,12 +115,12 @@ const services = [
 <!-- 2. O NAMA -->
 <section class="section" id="o-nama">
 	<div class="wrap about">
-		<div>
+		<div data-reveal="left">
 			<p class="eyebrow">{t.oNamaEyebrow}</p>
 			<h2>{oNama.naslov}</h2>
 		</div>
 		<div class="about-text">
-			{oNama.tekst.map((p) => <p>{p}</p>)}
+			{oNama.tekst.map((p, i) => <p data-reveal style={`--i: ${i + 1}`}>{p}</p>)}
 		</div>
 	</div>
 </section>
@@ -128,13 +128,13 @@ const services = [
 <!-- 3. KAKO GLEDAMO NA PRAVO -->
 <section class="section section-dark">
 	<div class="wrap">
-		<div class="section-head">
+		<div class="section-head" data-reveal>
 			<p class="eyebrow">{t.pristupEyebrow}</p>
 			<h2>{t.pristupNaslov}</h2>
 		</div>
 		<ol class="views">
 			{pogledi.map((p, i) => (
-				<li>
+				<li data-reveal style={`--i: ${i % 2}`}>
 					<span class="view-num">{String(i + 1).padStart(2, '0')}</span>
 					<h3>{p.naslov}</h3>
 					<p>{p.tekst}</p>
@@ -147,13 +147,13 @@ const services = [
 <!-- 4. ADVOKATI -->
 <section class="section" id="lawyers">
 	<div class="wrap">
-		<div class="section-head">
+		<div class="section-head" data-reveal>
 			<p class="eyebrow">{t.advokatiEyebrow}</p>
 			<h2>{t.advokatiNaslov}</h2>
 		</div>
 		<div class="lawyers">
-			{advokati.map((a) => (
-				<article class="lawyer">
+			{advokati.map((a, i) => (
+				<article class="lawyer" data-reveal style={`--i: ${i}`}>
 					<img src={a.foto} alt={`${a.ime}, ${(en ? a.zvanjeEn : a.zvanje).toLowerCase()}`} width="600" height="434" loading="lazy" />
 					<div class="lawyer-text">
 						<h3>{a.ime}</h3>
@@ -172,7 +172,7 @@ const services = [
 <!-- 5. KAKO MOŽEMO POMOĆI: upitnik (srpski) ili usluge (engleski) -->
 <section class="section section-surface" id={en ? 'services' : 'pitanja'}>
 	<div class="wrap">
-		<div class="section-head">
+		<div class="section-head" data-reveal>
 			<p class="eyebrow">{t.pomocEyebrow}</p>
 			<h2>{t.pomocNaslov}</h2>
 			<p>{t.pomocTekst}</p>
@@ -180,8 +180,8 @@ const services = [
 
 		{en ? (
 			<div class="cards">
-				{services.map((s) => (
-					<div class="card">
+				{services.map((s, i) => (
+					<div class="card" data-reveal style={`--i: ${i % 3}`}>
 						<h3>{s.title}</h3>
 						<p>{s.text}</p>
 					</div>
@@ -190,20 +190,20 @@ const services = [
 		) : (
 			<>
 				<ul class="quick">
-					{brzo.map((b) => <li><a href={b.href}>{b.tekst}<span aria-hidden="true">→</span></a></li>)}
+					{brzo.map((b, i) => <li data-reveal style={`--i: ${i % 3}`}><a href={b.href}>{b.tekst}<span aria-hidden="true">→</span></a></li>)}
 				</ul>
 
-				<h3 class="sub">Sve oblasti rada</h3>
+				<h3 class="sub" data-reveal>Sve oblasti rada</h3>
 				<div class="cards">
-					{osnovne.map((o) => (
-						<a class="card" href={`/oblasti/${o.id}/`}>
+					{osnovne.map((o, i) => (
+						<a class="card" data-reveal style={`--i: ${i % 3}`} href={`/oblasti/${o.id}/`}>
 							<h3>{o.data.naziv}</h3>
 							<p>{o.data.kratko}</p>
 							<span class="more">Saznajte više →</span>
 						</a>
 					))}
 				</div>
-				<div class="also">
+				<div class="also" data-reveal>
 					<p class="also-title">Takođe postupamo u oblastima:</p>
 					<ul class="pill-list">
 						{dodatne.map((o) => <li><a href={`/oblasti/${o.id}/`}>{o.data.naziv}</a></li>)}
@@ -217,13 +217,13 @@ const services = [
 <!-- 6. KAKO RADIMO -->
 <section class="section">
 	<div class="wrap">
-		<div class="section-head">
+		<div class="section-head" data-reveal>
 			<p class="eyebrow">{t.koraciEyebrow}</p>
 			<h2>{t.koraciNaslov}</h2>
 		</div>
 		<ol class="steps">
 			{t.koraci.map((k, i) => (
-				<li>
+				<li data-reveal style={`--i: ${i}`}>
 					<span class="step-num">{String(i + 1).padStart(2, '0')}</span>
 					<h3>{k.naslov}</h3>
 					<p>{k.tekst}</p>
@@ -237,7 +237,7 @@ const services = [
 {!en && (
 	<section class="section section-surface">
 		<div class="wrap split">
-			<div>
+			<div data-reveal="left">
 				<p class="eyebrow">For international clients</p>
 				<h2>Doing business in Serbia?</h2>
 			</div>
@@ -273,6 +273,17 @@ const services = [
 	@media (prefers-reduced-motion: reduce) { .hero-bg img { animation: none; } }
 
 	.hero-text { max-width: 38rem; }
+	/* Ulaz naslovnog dela pri otvaranju stranice: delovi dolaze jedan za drugim */
+	.hero-text > * { animation: hero-ulaz 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+	.hero-text > :nth-child(1) { animation-delay: 0.1s; }
+	.hero-text > :nth-child(2) { animation-delay: 0.25s; }
+	.hero-text > :nth-child(3) { animation-delay: 0.45s; }
+	.hero-text > :nth-child(4) { animation-delay: 0.6s; }
+	@keyframes hero-ulaz {
+		from { opacity: 0; transform: translate3d(0, 24px, 0); }
+		to { opacity: 1; transform: none; }
+	}
+	@media (prefers-reduced-motion: reduce) { .hero-text > * { animation: none; } }
 	.hero h1 { max-width: 14ch; color: #fff; }
 	.hero .eyebrow { color: #c9d4e3; }
 	.hero .lede { margin-bottom: 2rem; color: #d5dde8; }
