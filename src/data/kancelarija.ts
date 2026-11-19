@@ -15,6 +15,7 @@ export const kancelarija = {
 
 	telefon: '060 092 9629', // kako se prikazuje na sajtu
 	telefonMedjunarodni: '+381600929629', // za link "pozovi" i za Google
+	telefonEn: '+381 60 092 9629', // kako se prikazuje na engleskoj verziji
 	email: 'office@jagiclaw.rs',
 	adresa: 'Krfska 13/21',
 	postanskiBroj: '11050',
@@ -53,6 +54,33 @@ export const kancelarija = {
 		{
 			naslov: 'Uz klijenta kroz ceo život posla',
 			tekst: 'Od osnivanja firme, preko svakodnevnog poslovanja, do rasta i novih tržišta. Kada poznajemo vaš posao, savet je brži i bolji.',
+		},
+	],
+
+	// Engleska verzija istih tekstova, za /en/.
+	oNamaEn: {
+		naslov: 'A law office focused on business',
+		tekst: [
+			'We are Luka Jagić and Damjan Jagić, attorneys at law in Belgrade. We believe a lawyer should not be someone you call only once a problem has arisen, but someone you consult before you make an important decision.',
+			'That is why we work closely with our clients, companies, entrepreneurs and individuals alike, and on every matter together. Luka’s ten years of experience in corporate and employment law and data protection give us confidence, and working as a team of two lets us give every matter our full attention.',
+		],
+	},
+	poglediEn: [
+		{
+			naslov: 'Law should serve business',
+			tekst: 'Legal advice is worth as much as it helps your business move forward. Before we tell you what is risky, we ask what you want to achieve, and then find a safe way to get there.',
+		},
+		{
+			naslov: 'Clear, without legal jargon',
+			tekst: 'You should understand every document you sign. We explain things simply and give you a concrete recommendation, not a list of options.',
+		},
+		{
+			naslov: 'Better to prevent a dispute than to fight one',
+			tekst: 'The cheapest dispute is the one that never happens. That is why we put the work into good contracts and clear rules before a problem arises.',
+		},
+		{
+			naslov: 'With you through the life of your business',
+			tekst: 'From incorporation, through day-to-day operations, to growth and new markets. When we know your business, our advice is faster and better.',
 		},
 	],
 

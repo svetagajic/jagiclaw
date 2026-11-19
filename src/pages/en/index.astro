@@ -1,100 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
-import KontaktCta from '../../components/KontaktCta.astro';
-import { advokati, kancelarija, telefonLink, emailLink } from '../../data/kancelarija';
+import Pocetna from '../../components/Pocetna.astro';
 import { kancelarijaSchema } from '../../data/schema';
-
-const services = [
-	{ title: 'Company formation', text: 'Setting up an LLC (doo) or a branch office, registration with the Serbian Business Registers Agency (APR), founding acts and shareholder agreements.' },
-	{ title: 'Commercial contracts', text: 'Distribution, cooperation, lease and sale agreements, drafted in English and Serbian side by side.' },
-	{ title: 'Bank accounts and KYC', text: 'Preparing documents for opening corporate and personal bank accounts, beneficial ownership, apostille and certified translations.' },
-	{ title: 'Real estate', text: 'Due diligence before purchase, sale and lease agreements, notarisation and registration in the cadastre.' },
-	{ title: 'Data protection', text: 'Compliance with the Serbian Personal Data Protection Act (largely modelled on the GDPR): privacy policies, records of processing, processor agreements and appointing a representative in Serbia.' },
-	{ title: 'Employment', text: 'Employment contracts, internal rules and terminations for foreign employers in Serbia.' },
-	{ title: 'Disputes and debt collection', text: 'Representation before Serbian courts in commercial, employment and civil disputes, and enforcement of claims.' },
-	{ title: 'Tax procedures', text: 'Representation before the Tax Administration, objections to audit reports and appeals.' },
-	{ title: 'Criminal and misdemeanour defence', text: 'Defence from the first police interview, and representation in misdemeanour proceedings.' },
-];
 ---
 
 <Base
 	title="English-speaking lawyers in Belgrade, Serbia | JagicLaw"
-	description="Law office in Belgrade advising foreign companies and individuals in English: company formation, contracts, bank accounts, real estate, employment and disputes."
+	description="Luka Jagić and Damjan Jagić, attorneys at law in Belgrade. We advise companies and individuals in English: company formation, contracts, employment, data protection, real estate and disputes."
 	jezik="en"
 	schema={[kancelarijaSchema()]}
 >
-	<section class="hero">
-		<div class="wrap">
-			<p class="eyebrow">Law office · Belgrade, Serbia</p>
-			<h1>English-speaking lawyers in Belgrade</h1>
-			<p class="lede">
-				We help foreign companies and individuals do business in Serbia. All communication and documents in English, with
-				bilingual Serbian–English contracts where Serbian law requires a Serbian version.
-			</p>
-			<div class="btn-row">
-				<a class="btn" href={emailLink}>Email us</a>
-				<a class="btn btn-ghost" href={telefonLink}>Call us</a>
-			</div>
-		</div>
-	</section>
-
-	<section class="section section-surface" id="services">
-		<div class="wrap">
-			<div class="section-head">
-				<p class="eyebrow">Services</p>
-				<h2>How we can help</h2>
-			</div>
-			<div class="cards">
-				{services.map((s) => (
-					<div class="card">
-						<h3>{s.title}</h3>
-						<p>{s.text}</p>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="section" id="lawyers">
-		<div class="wrap">
-			<div class="section-head">
-				<p class="eyebrow">Lawyers</p>
-				<h2>Who you will work with</h2>
-				<p>The lawyer you first speak with handles your matter from start to finish.</p>
-			</div>
-			<div class="people">
-				{advokati.map((a) => (
-					<article class="person">
-						<img class="photo" src={a.foto} alt={`${a.ime}, ${a.zvanjeEn.toLowerCase()}`} width="600" height="434" loading="lazy" />
-						<div class="person-text">
-							<h3>{a.ime}</h3>
-							<p class="role">{a.zvanjeEn}</p>
-							{a.bioEn.map((p) => <p>{p}</p>)}
-						</div>
-					</article>
-				))}
-			</div>
-			<ul class="checks why">
-				{kancelarija.prednostiEn.map((p) => <li>{p}</li>)}
-			</ul>
-		</div>
-	</section>
-
-	<KontaktCta en />
+	<Pocetna en />
 </Base>
-
-<style>
-	.hero { padding-block: 3rem 4rem; background: linear-gradient(180deg, var(--surface) 0%, #fff 100%); }
-	@media (min-width: 48rem) { .hero { padding-block: 5rem 6rem; } }
-	.hero h1 { max-width: 18ch; }
-	.hero .lede { margin-bottom: 2rem; }
-	.people { display: grid; gap: 1rem; }
-	@media (min-width: 40rem) { .people { grid-template-columns: 1fr 1fr; } }
-	.people { gap: 1.5rem; }
-	.person { background: var(--surface); border-radius: 18px; overflow: hidden; }
-	.photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; }
-	.person-text { padding: 1.5rem; }
-	.person h3 { font-size: 1.4rem; margin: 0; }
-	.role { margin: 0 0 0.9rem; color: var(--accent); font-weight: 600; }
-	.why { margin-top: 2.5rem; max-width: 46rem; }
-</style>

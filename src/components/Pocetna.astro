@@ -1,0 +1,333 @@
+---
+// Početna strana, ista za srpski (/) i engleski (/en/). Menja se samo tekst.
+import { getCollection } from 'astro:content';
+import KontaktCta from './KontaktCta.astro';
+import { kancelarija, advokati, telefonLink } from '../data/kancelarija';
+
+interface Props {
+	en?: boolean;
+}
+const { en = false } = Astro.props;
+
+const oblasti = (await getCollection('oblasti')).sort((a, b) => a.data.redosled - b.data.redosled);
+const osnovne = oblasti.filter((o) => o.data.grupa === 'osnovna');
+const dodatne = oblasti.filter((o) => o.data.grupa === 'dodatna');
+
+const telefon = en ? kancelarija.telefonEn : kancelarija.telefon;
+const oNama = en ? kancelarija.oNamaEn : kancelarija.oNama;
+const pogledi = en ? kancelarija.poglediEn : kancelarija.pogledi;
+
+const t = en
+	? {
+			eyebrow: 'Law office · Belgrade, Serbia',
+			h1: 'Law in the service of your business',
+			lede: 'We bring law and business together: clear, practical advice that helps you grow, not just avoid risk.',
+			upoznajte: 'Meet us',
+			pozovite: `Call ${telefon}`,
+			oNamaEyebrow: 'About us',
+			pristupEyebrow: 'Our approach',
+			pristupNaslov: 'How we see the law',
+			advokatiEyebrow: 'Lawyers',
+			advokatiNaslov: 'Who will work on your matter',
+			vise: (ime: string) => `More about ${ime.split(' ')[0]} →`,
+			pomocEyebrow: 'Services',
+			pomocNaslov: 'How we can help',
+			pomocTekst: 'We advise foreign companies and individuals doing business in Serbia, in English, with bilingual Serbian–English documents where Serbian law requires a Serbian version.',
+			koraciEyebrow: 'How we work',
+			koraciNaslov: 'From the first call to a solution',
+			koraci: [
+				{ naslov: 'Get in touch', tekst: 'Call or email us with a short description of your situation and any documents you have.' },
+				{ naslov: 'Assessment', tekst: 'We tell you what your options are, where the risk lies and what we recommend. Before we start, we agree on the scope of work and how fees are charged.' },
+				{ naslov: 'Working on your matter', tekst: 'We take the matter on and keep you informed. You always know where things stand and what comes next.' },
+			],
+		}
+	: {
+			eyebrow: `Advokatska kancelarija · ${kancelarija.grad}`,
+			h1: 'Pravo u službi vašeg poslovanja',
+			lede: 'Spajamo pravo i poslovanje: jasni i praktični saveti koji vam pomažu da rastete, a ne samo da izbegnete rizik.',
+			upoznajte: 'Upoznajte nas',
+			pozovite: `Pozovite: ${telefon}`,
+			oNamaEyebrow: 'O nama',
+			pristupEyebrow: 'Naš pristup',
+			pristupNaslov: 'Kako gledamo na pravo',
+			advokatiEyebrow: 'Advokati',
+			advokatiNaslov: 'Ko će raditi na vašem predmetu',
+			vise: (ime: string) => `Više o ${ime.startsWith('Luka') ? 'Luki' : 'Damjanu'} →`,
+			pomocEyebrow: 'Kako vam možemo pomoći',
+			pomocNaslov: 'S čim nam se najčešće obraćate?',
+			pomocTekst: 'Izaberite situaciju koja liči na vašu i pročitajte šta radimo i odgovore na najčešća pitanja.',
+			koraciEyebrow: 'Kako radimo',
+			koraciNaslov: 'Od prvog poziva do rešenja',
+			koraci: [
+				{ naslov: 'Javite se', tekst: 'Pozovite nas ili pošaljite e-mail sa kratkim opisom situacije i dokumentima koje imate.' },
+				{ naslov: 'Procena', tekst: 'Kažemo vam koje su vaše mogućnosti, šta je rizik i šta predlažemo. Pre početka rada dogovaramo obim posla i način obračuna naknade.' },
+				{ naslov: 'Rad na predmetu', tekst: 'Preuzimamo posao i redovno vas obaveštavamo. Uvek znate u kojoj je fazi vaš predmet i šta sledi.' },
+			],
+		};
+
+// Srpski: brzi linkovi ka stranicama oblasti (upitnik)
+const brzo = [
+	{ tekst: 'Osnivam firmu', href: '/oblasti/privredno-pravo/' },
+	{ tekst: 'Treba mi ugovor ili pregled ugovora', href: '/oblasti/trgovinsko-pravo/' },
+	{ tekst: 'Dobio sam otkaz', href: '/oblasti/radno-pravo/' },
+	{ tekst: 'Kupujem ili izdajem stan', href: '/oblasti/nepokretnosti/' },
+	{ tekst: 'Neko mi duguje novac', href: '/oblasti/naplata-potrazivanja/' },
+	{ tekst: 'Pozvan sam u policiju', href: '/oblasti/krivicno-pravo/' },
+];
+
+// Engleski: usluge za strane klijente (stranice oblasti postoje samo na srpskom)
+const services = [
+	{ title: 'Company formation', text: 'Setting up an LLC (doo) or a branch office, registration with the Serbian Business Registers Agency (APR), founding acts and shareholder agreements.' },
+	{ title: 'Commercial contracts', text: 'Distribution, cooperation, lease and sale agreements, drafted in English and Serbian side by side.' },
+	{ title: 'Bank accounts and KYC', text: 'Preparing documents for opening corporate and personal bank accounts, beneficial ownership, apostille and certified translations.' },
+	{ title: 'Real estate', text: 'Due diligence before purchase, sale and lease agreements, notarisation and registration in the cadastre.' },
+	{ title: 'Data protection', text: 'Compliance with the Serbian Personal Data Protection Act (largely modelled on the GDPR): privacy policies, records of processing, processor agreements and appointing a representative in Serbia.' },
+	{ title: 'Employment', text: 'Employment contracts, internal rules and terminations for foreign employers in Serbia.' },
+	{ title: 'Disputes and debt collection', text: 'Representation before Serbian courts in commercial, employment and civil disputes, and enforcement of claims.' },
+	{ title: 'Tax procedures', text: 'Representation before the Tax Administration, objections to audit reports and appeals.' },
+	{ title: 'Criminal and misdemeanour defence', text: 'Defence from the first police interview, and representation in misdemeanour proceedings.' },
+];
+---
+
+<!-- 1. NASLOVNI DEO preko fotografije Beograda -->
+<section class="hero">
+	<!-- Pozadina: Beograd, spomenik Pobedniku na Kalemegdanu i ušće Save u Dunav, crno-belo, sa sporim zumiranjem.
+	     Fotografija: Dimitrije Milenković, Unsplash (Unsplash licenca, slobodna za komercijalnu upotrebu). -->
+	<div class="hero-bg" aria-hidden="true">
+		<picture>
+			<source media="(max-width: 47.99rem)" srcset="/beograd/hero-1200.jpg" />
+			<img src="/beograd/hero-2000.jpg" alt="" width="2000" height="1125" fetchpriority="high" />
+		</picture>
+	</div>
+	<div class="wrap">
+		<div class="hero-text">
+			<p class="eyebrow">{t.eyebrow}</p>
+			<h1>{t.h1}</h1>
+			<p class="lede">{t.lede}</p>
+			<div class="btn-row">
+				<a class="btn" href="#o-nama">{t.upoznajte}</a>
+				<a class="btn btn-ghost" href={telefonLink}>{t.pozovite}</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 2. O NAMA -->
+<section class="section" id="o-nama">
+	<div class="wrap about">
+		<div>
+			<p class="eyebrow">{t.oNamaEyebrow}</p>
+			<h2>{oNama.naslov}</h2>
+		</div>
+		<div class="about-text">
+			{oNama.tekst.map((p) => <p>{p}</p>)}
+		</div>
+	</div>
+</section>
+
+<!-- 3. KAKO GLEDAMO NA PRAVO -->
+<section class="section section-dark">
+	<div class="wrap">
+		<div class="section-head">
+			<p class="eyebrow">{t.pristupEyebrow}</p>
+			<h2>{t.pristupNaslov}</h2>
+		</div>
+		<ol class="views">
+			{pogledi.map((p, i) => (
+				<li>
+					<span class="view-num">{String(i + 1).padStart(2, '0')}</span>
+					<h3>{p.naslov}</h3>
+					<p>{p.tekst}</p>
+				</li>
+			))}
+		</ol>
+	</div>
+</section>
+
+<!-- 4. ADVOKATI -->
+<section class="section" id="lawyers">
+	<div class="wrap">
+		<div class="section-head">
+			<p class="eyebrow">{t.advokatiEyebrow}</p>
+			<h2>{t.advokatiNaslov}</h2>
+		</div>
+		<div class="lawyers">
+			{advokati.map((a) => (
+				<article class="lawyer">
+					<img src={a.foto} alt={`${a.ime}, ${(en ? a.zvanjeEn : a.zvanje).toLowerCase()}`} width="600" height="434" loading="lazy" />
+					<div class="lawyer-text">
+						<h3>{a.ime}</h3>
+						<p class="role">{en ? a.zvanjeEn : a.zvanje}</p>
+						<p>{(en ? a.bioEn : a.bio)[0]}</p>
+						{en
+							? <p>{a.bioEn[1]}</p>
+							: <a href={`/advokati/#${a.slug}`}>{t.vise(a.ime)}</a>}
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- 5. KAKO MOŽEMO POMOĆI: upitnik (srpski) ili usluge (engleski) -->
+<section class="section section-surface" id={en ? 'services' : 'pitanja'}>
+	<div class="wrap">
+		<div class="section-head">
+			<p class="eyebrow">{t.pomocEyebrow}</p>
+			<h2>{t.pomocNaslov}</h2>
+			<p>{t.pomocTekst}</p>
+		</div>
+
+		{en ? (
+			<div class="cards">
+				{services.map((s) => (
+					<div class="card">
+						<h3>{s.title}</h3>
+						<p>{s.text}</p>
+					</div>
+				))}
+			</div>
+		) : (
+			<>
+				<ul class="quick">
+					{brzo.map((b) => <li><a href={b.href}>{b.tekst}<span aria-hidden="true">→</span></a></li>)}
+				</ul>
+
+				<h3 class="sub">Sve oblasti rada</h3>
+				<div class="cards">
+					{osnovne.map((o) => (
+						<a class="card" href={`/oblasti/${o.id}/`}>
+							<h3>{o.data.naziv}</h3>
+							<p>{o.data.kratko}</p>
+							<span class="more">Saznajte više →</span>
+						</a>
+					))}
+				</div>
+				<div class="also">
+					<p class="also-title">Takođe postupamo u oblastima:</p>
+					<ul class="pill-list">
+						{dodatne.map((o) => <li><a href={`/oblasti/${o.id}/`}>{o.data.naziv}</a></li>)}
+					</ul>
+				</div>
+			</>
+		)}
+	</div>
+</section>
+
+<!-- 6. KAKO RADIMO -->
+<section class="section">
+	<div class="wrap">
+		<div class="section-head">
+			<p class="eyebrow">{t.koraciEyebrow}</p>
+			<h2>{t.koraciNaslov}</h2>
+		</div>
+		<ol class="steps">
+			{t.koraci.map((k, i) => (
+				<li>
+					<span class="step-num">{String(i + 1).padStart(2, '0')}</span>
+					<h3>{k.naslov}</h3>
+					<p>{k.tekst}</p>
+				</li>
+			))}
+		</ol>
+	</div>
+</section>
+
+<!-- 7. STRANI KLIJENTI (samo na srpskoj verziji) -->
+{!en && (
+	<section class="section section-surface">
+		<div class="wrap split">
+			<div>
+				<p class="eyebrow">For international clients</p>
+				<h2>Doing business in Serbia?</h2>
+			</div>
+			<div>
+				<p>
+					We advise foreign companies and individuals in English: company formation, bilingual contracts, bank accounts and KYC,
+					real estate, employment and data protection.
+				</p>
+				<a href="/en/" hreflang="en">Read more in English →</a>
+			</div>
+		</div>
+	</section>
+)}
+
+<KontaktCta en={en} />
+
+<style>
+	/* Hero: crno-bela fotografija Beograda, niskog kontrasta, sa sporim zumiranjem u petlji */
+	.hero { position: relative; overflow: hidden; isolation: isolate; background: var(--footer); color: #e6ebf2; padding-block: 4rem 4.5rem; min-height: calc(100svh - 5rem); display: flex; align-items: center; }
+	@media (min-width: 48rem) { .hero { padding-block: 6rem; } }
+	.hero-bg { position: absolute; inset: 0; z-index: -1; }
+	/* Na širokim ekranima fotografiju širimo udesno, da Pobednik stoji desno od teksta */
+	.hero-bg picture { position: absolute; inset: 0; display: block; }
+	@media (min-width: 60rem) { .hero-bg picture { inset: 0 -28% 0 0; } }
+	.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; filter: grayscale(1) contrast(0.82) brightness(0.92); transform-origin: 58% 35%; animation: beograd-zoom 32s ease-in-out infinite alternate; will-change: transform; }
+	/* Tamni sloj preko fotografije: jači levo ispod teksta, slabiji desno da se vidi Kalemegdan */
+	.hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(7, 26, 51, 0.85) 0%, rgba(7, 26, 51, 0.6) 42%, rgba(7, 26, 51, 0.22) 75%, rgba(7, 26, 51, 0.3) 100%); }
+	@media (max-width: 47.99rem) { .hero-bg::after { background: rgba(7, 26, 51, 0.66); } }
+	@keyframes beograd-zoom {
+		from { transform: scale(1) translate3d(0, 0, 0); }
+		to { transform: scale(1.1) translate3d(-1%, 1%, 0); }
+	}
+	@media (prefers-reduced-motion: reduce) { .hero-bg img { animation: none; } }
+
+	.hero-text { max-width: 38rem; }
+	.hero h1 { max-width: 14ch; color: #fff; }
+	.hero .eyebrow { color: #c9d4e3; }
+	.hero .lede { margin-bottom: 2rem; color: #d5dde8; }
+	.hero .btn { background: #fff; border-color: #fff; color: var(--accent); }
+	.hero .btn:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent-hover); }
+	.hero .btn-ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+	.hero .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; color: #fff; }
+	.hero :focus-visible { outline-color: #fff; }
+
+	/* O nama */
+	.about { display: grid; gap: 1.5rem; }
+	@media (min-width: 56rem) { .about { grid-template-columns: 1fr 1.4fr; gap: 4rem; } }
+	.about h2 { max-width: 14ch; }
+	.about-text p { font-size: 1.15rem; color: var(--text); }
+
+	/* Kako gledamo na pravo: tamni deo u boji logotipa */
+	.section-dark { background: var(--footer); color: #c9d4e3; }
+	.section-dark h2, .section-dark h3 { color: #fff; }
+	.section-dark .eyebrow { color: #9fb3cf; }
+	.views { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.25rem; }
+	@media (min-width: 48rem) { .views { grid-template-columns: repeat(2, 1fr); gap: 3rem 4rem; } }
+	.views li { border-top: 1px solid rgba(255, 255, 255, 0.18); padding-top: 1.4rem; }
+	.view-num { display: block; color: #9fb3cf; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }
+	.views h3 { font-size: 1.45rem; margin-bottom: 0.6rem; }
+	.views p { margin: 0; max-width: 34rem; }
+
+	/* Advokati */
+	.lawyers { display: grid; gap: 1.5rem; }
+	@media (min-width: 52rem) { .lawyers { grid-template-columns: 1fr 1fr; align-items: start; } }
+	.lawyer { background: var(--surface); border-radius: 18px; overflow: hidden; }
+	.lawyer img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center 30%; }
+	.lawyer-text { padding: 1.6rem 1.75rem 1.9rem; }
+	.lawyer h3 { font-size: 1.45rem; margin: 0; }
+	.role { color: var(--accent); font-weight: 600; margin: 0 0 0.9rem; }
+	.lawyer-text a { font-weight: 600; text-decoration: none; }
+
+	/* Upitnik */
+	.quick { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+	@media (min-width: 40rem) { .quick { grid-template-columns: repeat(2, 1fr); } }
+	@media (min-width: 64rem) { .quick { grid-template-columns: repeat(3, 1fr); } }
+	.quick a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-weight: 500; transition: border-color 0.15s, color 0.15s; }
+	.quick a span { color: var(--accent); transition: transform 0.15s; }
+	.quick a:hover { border-color: var(--accent); color: var(--accent); }
+	.quick a:hover span { transform: translateX(3px); }
+	.sub { font-size: 1.35rem; margin: 3.5rem 0 1.25rem; }
+	.also { margin-top: 2.5rem; }
+	.also-title { font-weight: 600; color: var(--ink); }
+
+	/* Kako radimo */
+	.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
+	@media (min-width: 52rem) { .steps { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+	.steps li { border-top: 2px solid var(--ink); padding-top: 1.25rem; }
+	.step-num { display: block; font-weight: 600; color: var(--accent); font-size: 0.95rem; margin-bottom: 0.75rem; font-variant-numeric: tabular-nums; }
+	.steps p { color: var(--muted); margin: 0; }
+
+	.split { display: grid; gap: 2rem; }
+	@media (min-width: 52rem) { .split { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; } }
+</style>

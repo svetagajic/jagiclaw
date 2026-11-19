@@ -23,7 +23,7 @@ const {
 			<p>{tekst}</p>
 		</div>
 		<div class="cta-actions">
-			<a class="btn" href={telefonLink}>{kancelarija.telefon}</a>
+			<a class="btn" href={telefonLink}>{en ? kancelarija.telefonEn : kancelarija.telefon}</a>
 			<a class="btn btn-ghost" href={emailLink}>{kancelarija.email}</a>
 		</div>
 	</div>
