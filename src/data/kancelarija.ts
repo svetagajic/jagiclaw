@@ -33,7 +33,7 @@ export const kancelarija = {
 		naslov: 'Kancelarija okrenuta poslovanju',
 		tekst: [
 			'Mi smo Luka Jagić i Damjan Jagić, advokati iz Beograda. Verujemo da advokat ne treba da bude neko koga zovete tek kada je problem već nastao, već neko sa kim se savetujete pre nego što donesete važnu odluku.',
-			'Zato radimo blisko sa klijentima, firmama, preduzetnicima i građanima. Svaki predmet vodimo zajedno, od prvog razgovora do kraja. Iza nas je deset godina advokatske prakse u privrednom i radnom pravu i zaštiti podataka o ličnosti, a kao mlad tim od dvoje advokata svakom predmetu posvećujemo punu pažnju.',
+			'Zato radimo blisko sa našim klijentima: društvima, preduzetnicima i građanima. Svaki predmet vodimo zajedno, od prvog razgovora do kraja. Iza nas je deset godina advokatske prakse u privrednom i radnom pravu i zaštiti podataka o ličnosti, a kao mlad tim od dvoje advokata svakom predmetu posvećujemo punu pažnju.',
 		],
 	},
 
